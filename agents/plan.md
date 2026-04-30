@@ -3,7 +3,7 @@ mode: primary
 description: Plan mode. Disallows all edit tools.
 model: cliproxyapi/gpt-5.5
 permission:
-  "*": allow
+  "*": ask
   doom_loop: ask
   external_directory:
     "*": ask

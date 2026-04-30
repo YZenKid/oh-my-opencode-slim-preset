@@ -3,7 +3,7 @@ mode: primary
 description: The default agent. Executes tools based on configured permissions.
 model: cliproxyapi/gpt-5.5
 permission:
-  "*": allow
+  "*": ask
   doom_loop: ask
   external_directory:
     "*": ask

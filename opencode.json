@@ -189,6 +189,41 @@
     },
     "general": {
       "disable": true
+    },
+    "orchestrator": {
+      "permission": {
+        "*": "ask"
+      }
+    },
+    "oracle": {
+      "permission": {
+        "*": "ask"
+      }
+    },
+    "librarian": {
+      "permission": {
+        "*": "ask"
+      }
+    },
+    "explorer": {
+      "permission": {
+        "*": "ask"
+      }
+    },
+    "designer": {
+      "permission": {
+        "*": "ask"
+      }
+    },
+    "fixer": {
+      "permission": {
+        "*": "ask"
+      }
+    },
+    "council": {
+      "permission": {
+        "*": "ask"
+      }
     }
   },
   "lsp": true
