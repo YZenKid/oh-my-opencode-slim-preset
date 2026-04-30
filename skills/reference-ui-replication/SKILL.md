@@ -41,6 +41,34 @@ Create a concise visual spec before implementation:
 - Motion: initial reveal, hover, carousel, tab, scroll effects, transitions.
 - Responsive behavior: what stacks, hides, resizes, or reorders.
 
+Also extract measurable reference tokens when possible:
+
+- Loaded fonts and important font files.
+- Dominant colors and computed styles for `body`, headings, paragraph text, nav links, buttons, cards, tabs, and footer.
+- Section geometry: top/bottom coordinates, heights, container widths, grid columns, and large spacing gaps.
+- Hero geometry: headline box, visual asset box, CTA positions, badge/card positions.
+- Card/button geometry: dimensions, border radius, border color, background, shadow/glow, and hover states.
+
+Do not rely on memory or a mood description when computed styles, screenshots, or DOM inspection can provide stronger evidence.
+
+### 2.5 Extract an Asset Inventory
+
+Before implementation, list important visual assets from the reference:
+
+- `<img>` URLs, `srcset`, dimensions, and alt text.
+- CSS `background-image` URLs and pseudo-element imagery.
+- Inline/external SVG usage.
+- Icon fonts, SVG icon sets, brand/logo/icon libraries, and loaded font files.
+- Portraits, thumbnails, illustrations, decorative shapes, badges, and section backgrounds.
+
+Classify each important asset:
+
+1. **Project-owned/provided** — already available in the target project or explicitly supplied by the user.
+2. **Licensed reference asset** — may be reused only if the user confirms license/provision.
+3. **Third-party/restricted** — must be replaced with a legal style-equivalent.
+
+If direct reuse is not licensed, create or source colorful style-equivalent replacements. Do not replace colorful reference images/icons with generic monochrome placeholders unless the reference itself uses that treatment.
+
 ### 3. Inspect Existing Project Patterns
 
 Before creating new code, inspect the local project for:
@@ -92,6 +120,8 @@ After implementation:
 - Repeat at least one visual review pass for high-fidelity tasks.
 
 Do not claim a close match if screenshots were not captured after implementation.
+
+For high-fidelity work, the comparison must mention the biggest remaining deltas by section. Prioritize visible density and composition mismatches over tiny implementation details.
 
 ## When the Prompt Is Minimal
 

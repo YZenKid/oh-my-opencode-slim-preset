@@ -3,28 +3,28 @@ mode: primary
 description: The default agent. Executes tools based on configured permissions.
 model: cliproxyapi/gpt-5.5
 permission:
-  "*": ask
+  "*": allow
   doom_loop: ask
   external_directory:
     "*": ask
-    /Users/ujang/.local/share/opencode/tool-output/*: allow
-    /Users/ujang/.agents/skills/simplify/*: allow
-    /Users/ujang/.agents/skills/agent-browser/*: allow
-    /Users/ujang/.config/opencode/skills/ui-design-system/*: allow
-    /Users/ujang/.config/opencode/skills/cartography/*: allow
-    /Users/ujang/.config/opencode/skills/simplify/*: allow
-    /Users/ujang/.config/opencode/skills/ux-researcher-designer/*: allow
-    /Users/ujang/.config/opencode/skills/browser-use/*: allow
-    /Users/ujang/.config/opencode/skills/senior-qa/*: allow
-    /Users/ujang/.config/opencode/skills/codemap/*: allow
-    /Users/ujang/.config/opencode/skills/webapp-testing/*: allow
-    /Users/ujang/.config/opencode/skills/senior-backend/*: allow
-    /Users/ujang/.config/opencode/skills/senior-fullstack/*: allow
-    /Users/ujang/.config/opencode/skills/senior-architect/*: allow
-    /Users/ujang/.config/opencode/skills/ui-ux-pro-max/*: allow
-    /Users/ujang/.config/opencode/skills/senior-frontend/*: allow
-    /Users/ujang/.config/opencode/skills/senior-devops/*: allow
-    /Users/ujang/.config/opencode/skills/web-design-guidelines/*: allow
+    /home/ujang/.local/share/opencode/tool-output/*: allow
+    /home/ujang/.agents/skills/simplify/*: allow
+    /home/ujang/.agents/skills/agent-browser/*: allow
+    /home/ujang/.config/opencode/skills/ui-design-system/*: allow
+    /home/ujang/.config/opencode/skills/cartography/*: allow
+    /home/ujang/.config/opencode/skills/simplify/*: allow
+    /home/ujang/.config/opencode/skills/ux-researcher-designer/*: allow
+    /home/ujang/.config/opencode/skills/browser-use/*: allow
+    /home/ujang/.config/opencode/skills/senior-qa/*: allow
+    /home/ujang/.config/opencode/skills/codemap/*: allow
+    /home/ujang/.config/opencode/skills/webapp-testing/*: allow
+    /home/ujang/.config/opencode/skills/senior-backend/*: allow
+    /home/ujang/.config/opencode/skills/senior-fullstack/*: allow
+    /home/ujang/.config/opencode/skills/senior-architect/*: allow
+    /home/ujang/.config/opencode/skills/ui-ux-pro-max/*: allow
+    /home/ujang/.config/opencode/skills/senior-frontend/*: allow
+    /home/ujang/.config/opencode/skills/senior-devops/*: allow
+    /home/ujang/.config/opencode/skills/web-design-guidelines/*: allow
   plan_exit: deny
   read:
     "*.env": ask
