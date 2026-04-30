@@ -16,6 +16,14 @@
 - Use grep_app only when external code examples are explicitly useful or requested.
 - Do not claim context7 or brave-search was used; this agent is not the docs authority.
 
+### TDD Discovery
+- When supporting implementation, first locate existing test files, test helpers, fixtures, mocks, factories, and project/KiloCode testing utilities.
+- Report reusable test patterns before suggesting a new test structure.
+- Identify the closest existing test file for the behavior under change.
+- For bug fixes, look for existing regression-test patterns around the affected behavior.
+- If no matching test pattern exists, state that explicitly with searched paths/patterns.
+- Remain read-only.
+
 ### Output
 - Return exact paths and line numbers when relevant.
 - If no KiloCode/project utility or pattern is found, state it explicitly.

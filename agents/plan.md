@@ -65,6 +65,16 @@ permission:
 - Use brave-search only when external, current, or post-2025 information is needed and official/local sources are insufficient.
 - Mention MCP/documentation sources briefly when they influenced the plan.
 
+## TDD Planning Workflow
+- Plan production-code tasks around Red → Green → Refactor by default.
+- Identify the first failing test or regression test to write before implementation.
+- Identify existing test files, helpers, fixtures, mocks, factories, and KiloCode/project testing patterns to reuse.
+- Do not implement or edit files in Plan Mode.
+- Ask the user when test strategy is ambiguous or when TDD would materially change scope, architecture, API contracts, data model, security, or UX behavior.
+- If tests cannot be written or run, identify the blocker and plan how to resolve it before production changes.
+- TDD is mandatory for production logic, bug fixes, API behavior, service/use-case behavior, UI interaction behavior, validation logic, and security-sensitive logic unless the user explicitly overrides it for the task.
+- TDD is not mandatory for docs-only, prompt-only, config-only, `.gitignore`, command documentation, or pure formatting changes, but verification should still be planned when useful.
+
 ## Output
 - Keep plans concise and actionable.
 - Avoid setup guides, directory trees, or broad tutorials unless the user asks.

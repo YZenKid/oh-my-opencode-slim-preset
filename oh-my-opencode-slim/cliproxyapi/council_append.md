@@ -11,6 +11,13 @@
 - Surface irreversible or architectural decisions as user decision points.
 - If source evidence is missing, state uncertainty and recommend verification through @librarian/@explorer rather than guessing.
 
+### TDD Consensus Criteria
+- Treat TDD feasibility and testability as part of the recommendation.
+- Prefer approaches that can be verified in small Red → Green → Refactor increments.
+- Surface risks where behavior is difficult to test or would require brittle tests.
+- If recommending architecture, include how it should be tested.
+- If TDD is not appropriate for the task, explain why and what verification should replace it.
+
 ### Output
 - Explain trade-offs concisely.
 - Mention which source types influenced the synthesis when relevant.

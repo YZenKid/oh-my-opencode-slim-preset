@@ -10,5 +10,10 @@
 - For UI screenshots, report layout, hierarchy, spacing, contrast, interaction cues, and visible accessibility concerns.
 - If the visual relates to KiloCode/project UI, note reusable patterns only when visible or provided in context.
 
+### Visual TDD Support
+- When analyzing screenshots for UI bugs, extract exact visible symptoms that can become regression test assertions.
+- Suggest observable user-facing conditions that tests can verify.
+- Do not infer hidden behavior; mark uncertainty.
+
 ### Scope
 - READ-ONLY: analyze and report only.

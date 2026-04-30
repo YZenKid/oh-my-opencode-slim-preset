@@ -21,6 +21,15 @@
 - Present options with concise pros/cons when multiple valid approaches exist.
 - Clearly mark assumptions and uncertainties.
 
+### TDD Review
+- Review whether tests capture behavior rather than implementation details.
+- Check that bug fixes include a regression test that fails before the fix.
+- Check that behavior slices cover success path, validation failure, and critical edge cases.
+- Challenge overly broad tests, brittle mocks, unnecessary snapshots, and untested behavior changes.
+- Recommend a simpler test strategy when tests are too coupled to internals.
+- For architectural recommendations, include how the behavior should be tested in Red → Green → Refactor increments.
+- Do not implement; advise with file/line references where possible.
+
 ### Output
 - Reference files/lines when relevant.
 - Keep findings actionable and concise.

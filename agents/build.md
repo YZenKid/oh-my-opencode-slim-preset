@@ -1,7 +1,7 @@
 ---
 mode: primary
 description: The default agent. Executes tools based on configured permissions.
-model: cliproxyapi/gpt-5.3-codex
+model: cliproxyapi/gpt-5.5
 permission:
   "*": allow
   doom_loop: ask
@@ -56,6 +56,35 @@ permission:
 - Use grep_app/github examples only when implementation patterns from real code are useful.
 - Use playwright for UI/runtime validation and semgrep for security-sensitive changes when relevant.
 - Mention MCP/documentation sources briefly when they influenced the answer.
+
+## TDD Workflow
+- Follow Red → Green → Refactor for production-code tasks by default.
+- Red: write or update a failing test that captures expected behavior before production logic.
+- Green: implement the smallest possible production change to pass the test.
+- Refactor: improve structure/readability only after tests are green.
+- Repeat in small behavior slices instead of large feature drops.
+
+## Test-First Implementation
+- Do not write production logic before at least one failing test exists for that behavior.
+- For bug fixes, first add a failing regression test that reproduces the bug.
+- Start testing at service/use-case/API/component boundaries, then add lower-level tests only when needed.
+- Keep tests deterministic, isolated, and aligned with existing project test patterns.
+- Prefer existing test helpers, fixtures, factories, mocks, and KiloCode/project utilities before creating new ones.
+- Prefer table-driven tests for multiple scenarios in Go code.
+- Cover success path, validation failure, and critical edge cases for each behavior slice.
+
+## TDD Exceptions
+- TDD is mandatory for production logic, bug fixes, API behavior, service/use-case behavior, UI interaction behavior, validation logic, and security-sensitive logic unless the user explicitly overrides it for the task.
+- TDD is not mandatory for docs-only, prompt-only, config-only, `.gitignore`, command documentation, or pure formatting changes, but run relevant validation when useful.
+- If tests cannot be written or run because tooling, environment, dependencies, or requirements are missing, pause implementation and explain the blocker.
+- Do not add low-value tests that only assert implementation details.
+
+## TDD Delivery Format
+- In progress/final summaries for code changes, report:
+  - Red: tests added or updated
+  - Green: production changes made
+  - Refactor: cleanup performed
+  - Verification: tests/checks run and result
 
 ## Output
 - Prefer direct code blocks when code is requested.

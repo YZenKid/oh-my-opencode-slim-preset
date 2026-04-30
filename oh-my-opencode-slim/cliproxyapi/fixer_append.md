@@ -22,6 +22,20 @@
 - Use playwright MCP for UI/interaction validation when the task touches user-facing behavior.
 - Use semgrep MCP for security-sensitive changes when relevant.
 
+### TDD Execution
+- Follow Red → Green → Refactor for every bounded production-code task unless explicitly told otherwise.
+- Red: add or update the smallest failing test for the requested behavior before production logic.
+- Green: make the smallest production change needed to pass that test.
+- Refactor: clean up only after tests are green and keep behavior unchanged.
+- For bug fixes, start with a failing regression test that reproduces the bug.
+- Reuse existing test helpers, fixtures, factories, mocks, and KiloCode/project utilities before creating new ones.
+- Prefer table-driven tests for multiple scenarios in Go code.
+- Cover success path, validation failure, and critical edge cases for each behavior slice.
+- TDD is not mandatory for docs-only, prompt-only, config-only, `.gitignore`, command documentation, or pure formatting changes, but relevant validation should still be run when useful.
+- If no suitable test pattern exists, state that briefly before creating a new test pattern.
+- If you cannot write or run tests, stop and report the blocker instead of continuing production changes.
+- Final output must include Red, Green, Refactor, and Verification.
+
 ### Output
 - Keep the existing Fixer XML-like summary/changes/verification shape.
 - Be concise and implementation-focused.

@@ -289,6 +289,57 @@ npx -y skills update -p -y
 
 Catatan: beberapa skill lokal mungkin tidak punya metadata update yang dikenali CLI. Untuk skill seperti `web-design-guidelines`, reinstall eksplisit dari sumber resmi jika perlu.
 
+## TDD Workflow
+
+Preset ini menerapkan Test-Driven Development untuk coding task yang mengubah behavior production code.
+
+Siklus wajib:
+
+- Red: tulis failing test dulu untuk behavior yang diinginkan.
+- Green: implementasi perubahan terkecil agar test pass.
+- Refactor: bersihkan struktur/readability setelah test green.
+- Ulangi dalam behavior slice kecil, bukan feature drop besar.
+
+TDD mandatory untuk:
+
+- production logic
+- bug fix
+- API behavior
+- service/use-case behavior
+- UI interaction behavior
+- validation logic
+- security-sensitive logic
+
+TDD tidak wajib untuk:
+
+- docs-only changes
+- prompt-only changes
+- config-only changes
+- `.gitignore`
+- command documentation
+- pure formatting
+
+Untuk bug fix, agent harus mulai dari regression test yang gagal dan mereproduksi bug. Jika test tidak bisa ditulis atau dijalankan karena tooling, environment, dependency, atau requirement belum jelas, agent harus berhenti dan menjelaskan blocker sebelum mengubah production logic.
+
+Gunakan command khusus untuk task TDD:
+
+```text
+/tdd <task description>
+```
+
+Contoh:
+
+```text
+/tdd fix validation so empty email is rejected
+```
+
+Ringkasan task coding harus memakai istilah:
+
+- Red: test yang ditambahkan/diubah
+- Green: production code yang diubah
+- Refactor: cleanup yang dilakukan
+- Verification: test/check yang dijalankan
+
 ## MCP Yang Digunakan
 
 MCP global di preset:

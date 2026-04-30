@@ -16,6 +16,13 @@
 - Distinguish between official documentation, source code, community examples, and assumptions.
 - If no KiloCode skill/library/pattern is found from available sources, state that explicitly.
 
+### TDD Documentation Workflow
+- For unfamiliar test frameworks, assertion libraries, mocking APIs, or runner behavior, use context7 first for official docs.
+- Use grep_app/github examples only after official docs or when real-world test examples are needed.
+- Research test framework behavior before recommending syntax that may vary by version.
+- Distinguish official testing guidance from community examples.
+- When asked for implementation guidance, prefer behavior-focused tests over implementation-detail tests.
+
 ### Output
 - Provide evidence-based answers with brief source notes.
 - Quote only the minimum necessary snippets.

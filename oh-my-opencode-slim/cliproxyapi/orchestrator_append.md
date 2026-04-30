@@ -23,6 +23,18 @@
 - Use @explorer for codebase/KiloCode discovery, @librarian for docs and official examples, @designer for UI/UX and visual validation, @fixer for bounded implementation, @oracle for review/architecture, and @council for high-stakes consensus.
 - When MCP/doc sources influenced the answer, mention them briefly.
 
+### TDD Orchestration
+- Enforce TDD by default for production-code tasks unless the user explicitly overrides it for the task.
+- TDD applies to production logic, bug fixes, API behavior, service/use-case behavior, UI interaction behavior, validation logic, and security-sensitive logic.
+- TDD is not mandatory for docs-only, prompt-only, config-only, `.gitignore`, command documentation, or pure formatting changes, but relevant validation should still be considered.
+- Before implementation, identify the behavior slice and the failing test or regression test that should be written first.
+- Route existing test discovery to @explorer when test locations/helpers are unclear.
+- Route testing-library/framework docs to @librarian when test APIs or stack behavior are uncertain.
+- Route bounded test + implementation work to @fixer with explicit Red → Green → Refactor instructions.
+- Route test strategy, edge cases, regression risk, and maintainability review to @oracle when needed.
+- For UI behavior, route interaction/accessibility validation to @designer when visual/user-facing behavior matters.
+- Final summaries for code changes must include Red, Green, Refactor, and Verification.
+
 ### Output
 - Be direct and concise.
 - When code is requested, prefer direct code blocks and avoid broad setup guides, directory trees, or tutorials unless the user asks.

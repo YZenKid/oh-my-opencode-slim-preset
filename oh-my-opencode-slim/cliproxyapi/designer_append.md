@@ -17,6 +17,14 @@
 - Ask before choosing a major visual direction, brand style, design system change, or UX flow when ambiguous.
 - For multiple valid UI directions, present concise options with trade-offs.
 
+### UI TDD Workflow
+- For user-facing UI behavior, prefer tests around user-visible behavior, accessibility roles, keyboard interaction, responsive behavior, and critical flows.
+- Use existing component/story/test patterns before creating new UI test structure.
+- Use playwright/agent-browser validation when practical after implementation.
+- Do not rely only on visual judgment; verify interactions and accessibility-relevant states.
+- If visual direction or UX behavior is ambiguous, ask before implementation.
+- For bug fixes visible in UI, define the observable regression condition that a test should assert.
+
 ### Output
 - Provide concrete visual/UX decisions, not generic advice.
 - Mention browser/MCP validation sources briefly when used.
