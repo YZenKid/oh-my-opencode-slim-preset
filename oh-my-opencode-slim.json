@@ -101,9 +101,9 @@
   },
   "council": {
     "default_preset": "default",
-    "timeout": 180000,
-    "councillor_execution_mode": "serial",
-    "councillor_retries": 1,
+    "timeout": 120000,
+    "councillor_execution_mode": "parallel",
+    "councillor_retries": 0,
     "presets": {
       "default": {
         "alpha": {
