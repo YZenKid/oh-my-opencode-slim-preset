@@ -1,0 +1,129 @@
+{
+  "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
+  "preset": "cliproxyapi",
+  "presets": {
+    "cliproxyapi": {
+      "orchestrator": {
+        "model": "cliproxyapi/gpt-5.5",
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*",
+          "!context7"
+        ]
+      },
+      "oracle": {
+        "model": "cliproxyapi/gpt-5.5",
+        "variant": "high",
+        "skills": [
+          "simplify",
+          "vercel-react-best-practices",
+          "frontend-design-review",
+          "agents-md"
+        ],
+        "mcps": [
+          "github",
+          "semgrep",
+          "playwright",
+          "brave-search",
+          "grep_app"
+        ]
+      },
+      "librarian": {
+        "model": "cliproxyapi/gpt-5.4-mini",
+        "variant": "low",
+        "skills": [
+          "find-skills"
+        ],
+        "mcps": [
+          "websearch",
+          "context7",
+          "grep_app",
+          "github",
+          "brave-search"
+        ]
+      },
+      "explorer": {
+        "model": "cliproxyapi/gpt-5.4-mini",
+        "variant": "low",
+        "skills": [],
+        "mcps": [
+          "semgrep",
+          "grep_app"
+        ]
+      },
+      "designer": {
+        "model": "cliproxyapi/gpt-5.4-mini",
+        "variant": "medium",
+        "skills": [
+          "agent-browser",
+          "frontend-design",
+          "frontend-design-review",
+          "web-design-guidelines",
+          "ui-ux-pro-max"
+        ],
+        "mcps": [
+          "playwright",
+          "shadcn",
+          "github",
+          "brave-search"
+        ]
+      },
+      "fixer": {
+        "model": "cliproxyapi/gpt-5.4-mini",
+        "variant": "low",
+        "skills": [
+          "playwright"
+        ],
+        "mcps": [
+          "playwright",
+          "semgrep",
+          "shadcn",
+          "github"
+        ]
+      },
+      "council": {
+        "model": "cliproxyapi/gpt-5.5",
+        "variant": "high",
+        "skills": [],
+        "mcps": [
+          "github",
+          "grep_app"
+        ]
+      }
+    }
+  },
+  "multiplexer": {
+    "type": "none",
+    "layout": "main-vertical",
+    "main_pane_size": 60
+  },
+  "council": {
+    "default_preset": "default",
+    "timeout": 180000,
+    "councillor_execution_mode": "serial",
+    "councillor_retries": 1,
+    "presets": {
+      "default": {
+        "alpha": {
+          "model": "cliproxyapi/gpt-5.4-mini",
+          "prompt": "Focus on speed, practical risk spotting, and concise implementation advice."
+        },
+        "beta": {
+          "model": "cliproxyapi/gpt-5.5",
+          "variant": "xhigh",
+          "prompt": "Focus on code-heavy reasoning, correctness, and implementation edge cases."
+        },
+        "gamma": {
+          "model": "cliproxyapi/gpt-5.5",
+          "variant": "high",
+          "prompt": "Focus on architecture, trade-offs, and overall recommendation quality."
+        }
+      }
+    }
+  },
+  "tmux": {
+    "enabled": false
+  }
+}
