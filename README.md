@@ -39,6 +39,7 @@ Auto-commit default ON untuk local commits only; never push automatically.
 
 - Jalan hanya setelah task plan-bound non-trivial selesai, validation lulus, dan `@quality-gate` memberi status `PASS` atau `PASS_WITH_RISKS` tanpa blocker.
 - Review `git status`/`git diff`, lalu stage hanya file relevan.
+- Commit message otomatis harus pakai subject singkat plus body bullet-point untuk perubahan penting.
 - Jangan stage `.env`, secrets, tokens, credentials, unrelated untracked files, atau generated/vendor files kecuali plan/user memang menyetujuinya.
 - Jangan gunakan `--no-verify`, `--no-gpg-sign`, `amend`, force push, atau destructive git commands.
 - Kalau pre-commit hook gagal, jangan amend; perbaiki isu lalu buat commit baru setelah tree bersih.

@@ -46,6 +46,7 @@ Rules:
 - If there are untracked files shown by git status, mention that they are not included in the diff unless they are staged.
 - Follow the repository's recent commit message style when it is clear.
 - If the repo appears to use Conventional Commits, prefer that format.
+- If auto-commit guidance or repo style suggests a multi-line message, output a concise subject line followed by a bullet-point body that summarizes the most important changes.
 - Keep prose in Indonesian.
 - Keep commit messages themselves in English unless the repository history clearly uses Indonesian.
 - Focus on why the change exists, not just what files changed.

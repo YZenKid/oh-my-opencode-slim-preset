@@ -420,6 +420,7 @@ const checks = [
       "Auto-commit default is ON for local commits only",
       "plan-bound non-trivial task completes",
       "@quality-gate returns `PASS` or `PASS_WITH_RISKS`",
+      "concise subject plus bullet-point body",
       "never push automatically",
       "Never stage `.env`, secrets, tokens, credentials",
       "Never use `--no-verify`, `--no-gpg-sign`, `amend`",
@@ -456,6 +457,7 @@ const checks = [
       "PASS_WITH_RISKS",
       "Review `git status`/`git diff`",
       "stage hanya file relevan",
+      "subject singkat plus body bullet-point",
       "Jangan stage `.env`, secrets, tokens, credentials",
       "Jangan gunakan `--no-verify`, `--no-gpg-sign`, `amend`",
       "Kalau scope atau staging meragukan, berhenti dan tanya",
@@ -488,6 +490,16 @@ const checks = [
       "playwright",
       "stitch",
       "shadcn",
+    ],
+  },
+  {
+    file: "commands/commit-message.md",
+    name: "manual commit message format gate",
+    mustInclude: [
+      "concise subject line followed by a bullet-point body",
+      "summarizes the most important changes",
+      "If auto-commit guidance or repo style suggests a multi-line message",
+      "Keep commit messages themselves in English",
     ],
   },
   {

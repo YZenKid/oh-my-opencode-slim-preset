@@ -42,7 +42,7 @@ Use this as the orchestrator’s single operating manual.
     - If the task exposed a reusable prompt gap, recurring failure, or new policy boundary, schedule a bounded `@skill-improver` checkpoint after the main task.
     - After non-trivial or risky work, route the final review pass to `@quality-gate` before claiming completion.
     - Use auto-commit for local commits only after a plan-bound non-trivial task completes, validation has passed, and @quality-gate returns `PASS` or `PASS_WITH_RISKS` with no blocker.
-    - Auto-commit must stage only relevant files, generate the commit message from the diff and recent repo style, create a local `git commit`, and never push automatically.
+    - Auto-commit must stage only relevant files, generate a concise subject plus bullet-point body from the diff and recent repo style, create a local `git commit`, and never push automatically.
     - Never stage `.env`, secrets, tokens, credentials, unrelated untracked files, or generated/vendor files unless the plan or user explicitly approved them.
     - Never use `--no-verify`, `--no-gpg-sign`, `amend`, force push, or destructive git commands; if a pre-commit hook fails, fix the issue and make a new commit only after the tree is clean.
     - If scope or staging is unclear, stop and ask.

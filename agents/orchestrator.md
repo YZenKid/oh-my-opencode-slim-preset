@@ -74,7 +74,7 @@ You are the router/integrator for non-trivial work; direct edits only when the c
 
 - Default auto-commit is ON for local commits only.
 - Use auto-commit after a plan-bound, non-trivial task is complete, validation has passed, and @quality-gate returns `PASS` or `PASS_WITH_RISKS` without blocker.
-- Stage only relevant files, derive the commit message from the diff and recent repository style, then create a local `git commit`.
+- Stage only relevant files, derive a concise subject plus bullet-point body from the diff and recent repository style, then create a local `git commit`.
 - Never push automatically.
 - Never stage `.env`, secrets, tokens, credentials, unrelated untracked files, or generated/vendor files unless the plan or user explicitly approved them.
 - Never use `--no-verify`, `--no-gpg-sign`, `amend`, force push, or destructive git commands.
