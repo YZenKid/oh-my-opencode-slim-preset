@@ -15,5 +15,5 @@ Adapted from Addy Osmani's
 
 ## Installation
 
-Bundled with `oh-my-opencode-slim` and installed automatically when bundled
+Bundled with `opencode-capybara` and installed locally when enabled
 skills are enabled via the installer.

@@ -4,6 +4,9 @@ import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
+const upstreamPresetName = ["oh", "my", "opencode", "slim"].join("-");
+const pluginPackageName = ["@opencode-ai", "plugin"].join("/");
+const disabledAgentsKey = ["disabled", "agents"].join("_");
 
 const checks = [
   {
@@ -548,8 +551,8 @@ const checks = [
     name: "runtime plugin removal gate",
     mustInclude: [],
     mustNotInclude: [
-      "oh-my-opencode-slim",
-      "@opencode-ai/plugin",
+      upstreamPresetName,
+      pluginPackageName,
     ],
   },
   {
@@ -557,7 +560,7 @@ const checks = [
     name: "tui plugin removal gate",
     mustInclude: [],
     mustNotInclude: [
-      "oh-my-opencode-slim",
+      upstreamPresetName,
     ],
   },
   {
@@ -565,16 +568,17 @@ const checks = [
     name: "runtime plugin wording gate",
     mustInclude: [],
     mustNotInclude: [
-      "oh-my-opencode-slim",
-      "@opencode-ai/plugin",
-      "disabled_agents",
+      upstreamPresetName,
+      pluginPackageName,
+      disabledAgentsKey,
       "Install dependency plugin",
       "plugin-generated",
       "plugin dependency",
-      "npm install @opencode-ai/plugin",
-      "oh-my-opencode-slim is required",
+      "npm install " + pluginPackageName,
+      upstreamPresetName + " is required",
       "required for core routing",
-      "oh-my-opencode-slim.json",
+      upstreamPresetName + ".json",
+      "previous plugin preset",
     ],
   },
   {
@@ -582,8 +586,8 @@ const checks = [
     name: "runtime dependency removal gate",
     mustInclude: [],
     mustNotInclude: [
-      "oh-my-opencode-slim",
-      "@opencode-ai/plugin",
+      upstreamPresetName,
+      pluginPackageName,
     ],
   },
   {
@@ -591,8 +595,8 @@ const checks = [
     name: "lockfile dependency removal gate",
     mustInclude: [],
     mustNotInclude: [
-      "oh-my-opencode-slim",
-      "@opencode-ai/plugin",
+      upstreamPresetName,
+      pluginPackageName,
     ],
   },
   {

@@ -1,6 +1,6 @@
 ---
 mode: primary
-description: Artifact-writing SDD/TDD planner using the original oh-my-opencode-slim plan flow without entering built-in read-only Plan Mode.
+description: Artifact-writing SDD/TDD planner using the standalone opencode-capybara plan flow without entering built-in read-only Plan Mode.
 model: cliproxyapi/gpt-5.5
 skills:
   - opencode-artifact-planner
@@ -72,7 +72,7 @@ permission:
 
 # Artifact Planner Agent
 
-This agent ports the original `plan` agent prompt/flow from oh-my-opencode-slim into a separate artifact-writing agent. It must **not** enter the built-in read-only Plan Mode.
+This agent ports the standalone `opencode-capybara` planning flow into a separate artifact-writing agent. It must **not** enter the built-in read-only Plan Mode.
 It may call informational, read-only, research, and documentation subagents to gather evidence and improve the plan, but it must not call implementation, source-edit, or generation subagents such as fixer, designer, or visual-asset-generator. If implementation is requested, write the plan and stop.
 
 ## Language
