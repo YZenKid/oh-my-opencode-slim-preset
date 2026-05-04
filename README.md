@@ -48,7 +48,7 @@ Jangan commit `.env`.
 | `opencode.json`, `tui.json`, `AGENTS.md` | Core config, MCP, dan global policy |
 | `agents/*.md` | Local Markdown agents untuk primary/subagent routing |
 | `skills/opencode-*/SKILL.md` | Workflow contract per specialist |
-| `commands/*.md` | Slash-command workflows (`/tdd`, UI replicate/revamp, commit message) |
+| `commands/commit-message.md` | Optional read-only helper untuk menyusun commit message manual |
 | `scripts/prompt-gate-regression.mjs` | Regression gates untuk prompt/config/docs invariants |
 | `bin/image-asset-mcp.mjs` | Local MCP wrapper untuk generated image assets |
 

@@ -614,6 +614,21 @@ const checks = [
     ],
   },
   {
+    file: "commands/tdd.md",
+    name: "retired workflow command removed gate",
+    mustBeMissing: true,
+  },
+  {
+    file: "commands/replicate-ui.md",
+    name: "retired UI workflow command removed gate",
+    mustBeMissing: true,
+  },
+  {
+    file: "commands/revamp-like.md",
+    name: "retired revamp workflow command removed gate",
+    mustBeMissing: true,
+  },
+  {
     file: "agents/visual-parity-auditor.md",
     name: "visual parity agent gate",
     mustInclude: [
@@ -798,6 +813,17 @@ function checkRootFilesForPortability() {
 }
 
 for (const check of checks) {
+  if (check.mustBeMissing) {
+    const absolute = resolve(root, check.file);
+    if (existsSync(absolute)) {
+      failures += 1;
+      console.error(`✗ ${check.file} (${check.name}) should be removed`);
+    } else {
+      console.log(`✓ ${check.file} (${check.name})`);
+    }
+    continue;
+  }
+
   const content = read(check.file);
   if (content === null) continue;
   const mustInclude = check.mustInclude ?? [];
