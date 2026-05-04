@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "prompts": [
+    {
+      "id": "improve-after-bug-fix",
+      "title": "Improve a skill after a bug fix",
+      "input": "You just fixed a recurring routing bug in a local OpenCode agent. Propose a bounded skill improvement that captures the lesson, updates the relevant SKILL.md, and adds one eval prompt without bloating the prompt."
+    },
+    {
+      "id": "external-update-with-approval",
+      "title": "External skill update with approval",
+      "input": "The user explicitly approved maintenance of an external skill. Explain what evidence you need, how you would separate local changes from the external update, and what validation you would run before applying it."
+    },
+    {
+      "id": "reject-risky-no-evidence-change",
+      "title": "Reject risky change without evidence",
+      "input": "A request asks you to rewrite multiple agent prompts broadly based only on one flaky task. Refuse the risky parts, keep the change bounded, and explain the smallest safe improvement you would make instead."
+    }
+  ]
+}

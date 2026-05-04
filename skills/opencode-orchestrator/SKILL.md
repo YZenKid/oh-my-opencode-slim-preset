@@ -15,6 +15,7 @@ Use this as the orchestrator’s single operating manual.
 - Substantial UI/UX, web, mobile, app design, design-system generation, or revamp work → `@designer`; when the `stitch` MCP is available, require a Stitch-assisted design-system pass before implementation unless the designer records a reason to skip it.
 - Non-trivial website/mobile motion direction or animation library/API choice → `@designer`; bounded implementation after the spec is clear → `@fixer` or build agent.
 - Bounded implementation, tests, fixtures, mocks, small refactors → `@fixer`.
+- Post-task prompt/agent/skill improvement after non-trivial work, repeated failures, recurring patterns, policy gaps, or explicit user request → `@skill-improver`; skip trivial tasks and keep the checkpoint bounded.
 - Architecture, senior review, simplification, security/scalability/data tradeoffs → `@oracle`.
 - Image-heavy legal replacements → designer asset manifest and image generation decision, then `@visual-asset-generator` or available image tool.
 - High-stakes ambiguous decisions → `@council` only when consensus is worth cost/time.
@@ -35,6 +36,7 @@ Use this as the orchestrator’s single operating manual.
 3. Use local discovery before external docs when codebase patterns matter.
 4. Ask targeted questions for material ambiguity.
 5. Execute via the right specialist/tool path.
+   - If the task exposed a reusable prompt gap, recurring failure, or new policy boundary, schedule a bounded `@skill-improver` checkpoint after the main task.
 6. Validate with tests/build/browser/security checks as appropriate.
 7. Summarize concisely in Indonesian.
 

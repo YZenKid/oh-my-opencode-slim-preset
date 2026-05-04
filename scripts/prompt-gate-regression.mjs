@@ -117,6 +117,7 @@ const checks = [
     mustInclude: [
       "mode: primary",
       "do not issue a final completion claim",
+      "@skill-improver",
     ],
   },
   {
@@ -126,6 +127,35 @@ const checks = [
       "mode: subagent",
       "hidden: true",
       "Hidden build/implementation subagent",
+    ],
+  },
+  {
+    file: "agents/skill-improver.md",
+    name: "skill improver subagent gate",
+    mustInclude: [
+      "mode: subagent",
+      "hidden: true",
+      "opencode-skill-improver",
+      "bounded post-task skill improvement subagent",
+      "secret",
+      "prompt bloat",
+      "blind external updates",
+    ],
+  },
+  {
+    file: "skills/opencode-skill-improver/SKILL.md",
+    name: "skill improver standalone skill gate",
+    mustInclude: [
+      "skill-creator",
+      "post-task improvement checkpoint",
+      "baseline",
+      "with-skill",
+      "evals",
+      "prompt bloat",
+      "secret",
+      "blind external updates",
+      "instruction conflicts",
+      "trigger description optimization",
     ],
   },
   {
@@ -191,6 +221,7 @@ const checks = [
       "inspired by",
       "style-equivalent",
       "close parity",
+      "@skill-improver",
     ],
   },
   {
@@ -294,6 +325,29 @@ const checks = [
       "Generated icons are only acceptable for decorative badges",
       "proper icon library",
       "designer review before visual parity claims",
+    ],
+  },
+  {
+    file: "README.md",
+    name: "skill improver documentation gate",
+    mustInclude: [
+      "@skill-improver",
+      "non-trivial",
+      "repeated failures",
+      "policy gaps",
+      "explicit request",
+      "no blind external updates",
+    ],
+  },
+  {
+    file: "oh-my-opencode-slim.json",
+    name: "skill improver preset gate",
+    mustInclude: [
+      "skill-improver",
+      "opencode-skill-improver",
+      "github",
+      "grep_app",
+      "brave-search",
     ],
   },
 ];

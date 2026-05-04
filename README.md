@@ -11,6 +11,15 @@ Preset konfigurasi OpenCode personal dengan plugin `oh-my-opencode-slim`, multi-
 - `skills/` dan `.agents/skills/` — skill tambahan untuk OpenCode/agent.
 - `scripts/prompt-gate-regression.mjs` — regression check untuk prompt/agent gates, path portability, dan boundary planner.
 
+## Agent Mapping dan Boundary
+
+- `@orchestrator` — routing utama untuk tugas umum, delegasi, dan validasi.
+- `@fixer` — implementasi bounded, test, fixture, dan refactor kecil.
+- `@skill-improver` — checkpoint pasca-tugas non-trivial untuk memperbaiki prompt, routing, references, dan eval secara kecil dan evidence-based.
+- `@designer`, `@oracle`, `@explorer`, `@librarian`, `@document-specialist`, `@visual-asset-generator`, `@council` — tetap mengikuti boundary masing-masing.
+- `@skill-improver` tidak wajib dipanggil setelah setiap tugas; gunakan hanya saat ada pola berulang, kegagalan berulang, gap kebijakan, atau permintaan eksplisit.
+- Jangan beri akses `.env` atau secret ke agent/skill ini, dan jangan lakukan update eksternal tanpa approval eksplisit.
+
 ## Verifikasi Konfigurasi
 
 Jalankan regression check setelah mengubah `AGENTS.md`, `agents/`, `skills/`, `opencode.json`, atau script gate:
@@ -26,6 +35,8 @@ Script ini memvalidasi:
 - motion/icon/visual-density gates,
 - portability/path rules,
 - agent architecture rules: primary agents via `mode: primary`, subagents via `mode: subagent`, `disable: true`, dan `hidden: true` untuk autocomplete bila didukung,
+- routing checkpoint untuk `@skill-improver` setelah tugas non-trivial / repeated failures / policy gaps / explicit request, tanpa menjadikannya wajib untuk tugas trivial,
+- safety gate `skill-improver`: no `.env`/secret access, no blind external updates, no broad rewrite tanpa approval, no prompt bloat, dan no instruction conflicts,
 - current architecture summary: plugin `oh-my-opencode-slim` hardcodes council menjadi `mode: all` setelah override; fix-nya adalah mematikan council bawaan lewat `disabled_agents` dan memakai `agents/council.md` sebagai subagent lokal sehingga council tidak muncul di primary agent switcher; built-in `build` dan `plan` dimatikan/di-hide sejauh didukung,
 - MCP `image-asset-generator` tidak memakai path relatif rapuh,
 - `artifact-planner` dapat memanggil subagent informasi/read-only/research/dokumentasi yang diizinkan: `explorer`, `librarian`, `oracle`, `council`, `observer`, `document-specialist`,
