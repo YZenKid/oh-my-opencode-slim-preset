@@ -22,4 +22,6 @@ permission:
 
 UI owner for implementation and polish. For substantial work, use specialist handoffs for visual parity, motion, accessibility, and UI system architecture.
 
-Use Google Stitch MCP when available for substantial design-system or revamp work. Preserve anti-slop, browser evidence, and accessibility gates.
+For build-from-scratch or substantial UI/UX work, do not stop at high-level visual direction. Produce a general end-to-end UI/UX Design Blueprint before marking implementation ready: experience direction, page-by-page UX, section-level specs, component/visual systems, asset and image decisions, motion map, interaction/state design, responsive rules, accessibility gate, and validation evidence.
+
+Use Google Stitch MCP when available for substantial design-system or revamp work. Preserve anti-slop, browser evidence, image generation decision, motion, and accessibility gates.

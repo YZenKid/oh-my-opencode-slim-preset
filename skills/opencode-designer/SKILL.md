@@ -13,15 +13,49 @@ Use this as the designer’s self-contained UI/UX manual.
 - Avoid generic AI UI: default purple gradients, bland centered cards, emoji icons, numeric-only service icons, placeholder imagery, blank image frames, and accidental system-font sameness.
 - Design typography, hierarchy, color, spacing, surfaces, motion, visual density, responsive behavior, and accessibility deliberately.
 - Prefer existing components/tokens; create small tokens only when missing.
+- For build-from-scratch, substantial app, dashboard, landing, mobile/web, or design-system work, the Design Gate is not satisfied by high-level visual intent alone. It must produce a general end-to-end UI/UX Design Blueprint before implementation is called ready.
+
+## General Design Readiness Gate
+
+For build-from-scratch or substantial UI/UX work, treat this gate as blocking until the plan/spec contains enough detail to implement without guessing. Keep it domain-agnostic: apply it to SaaS, dashboards, marketplaces, mobile apps, internal tools, portals, landing pages, and other product surfaces.
+
+Required blueprint sections:
+
+1. **Experience direction**
+   - Target users and primary/secondary personas.
+   - Usage context, device priority, tone/personality, visual richness, visual density, accessibility baseline, and performance expectations.
+2. **Page-by-page UX blueprint**
+   - For each major page/screen: purpose, user goal, primary/secondary actions, information hierarchy, section order, navigation behavior, responsive behavior, and empty/loading/error/success/permission/offline states when relevant.
+3. **Section-level visual specification**
+   - For each important section: role, layout, hierarchy, spacing, typography, color/background treatment, card/list/table/form treatment, CTA placement, imagery/icon usage, interaction behavior, motion behavior, state behavior, and mobile/tablet/desktop behavior.
+4. **Component system plan**
+   - Reusable components, variants, states, usage rules, accessibility requirements, responsive behavior, and motion behavior. Include forms, buttons, cards, navigation, data displays, feedback, empty states, and other core primitives as applicable.
+5. **Visual system**
+   - Palette roles, typography scale, spacing scale, radius, border, elevation/shadow, icon style, image/illustration style, layout grid, breakpoints, focus states, and light/dark mode rules when relevant.
+6. **Asset and image decision**
+   - Per visual area/section: `generate`, `use-provided-assets`, `licensed-existing-assets`, or `no-generation-needed`, with reason, asset type, dimensions, alt-text strategy, legal replacement policy, and integration notes. Do not leave final UIs with raw placeholders when visual quality depends on imagery.
+7. **Motion system**
+   - Motion purpose, animation API/library choice, per-page/section motion map, interaction motion, loading/success/error motion, reduced-motion fallback, timing/easing guidance, and performance constraints.
+8. **Interaction and state design**
+   - Default, hover, focus, active, disabled, loading, empty, error, success, permission denied, unauthenticated, offline/unavailable, partially loaded, skeleton, and validation states where applicable.
+9. **Responsive plan**
+   - Mobile/tablet/desktop layout rules, navigation changes, CTA placement, sticky/fixed behavior, data display adaptation, form layout changes, and image crop/ratio behavior.
+10. **Accessibility gate**
+   - Semantic headings, keyboard support, visible focus, form labels, contrast, screen-reader behavior for async state when needed, touch target sizing, reduced motion, and no color-only meaning.
+11. **Validation evidence**
+   - Required screenshots or review evidence by viewport and key states, interaction checks, motion/reduced-motion checks, accessibility notes, console/network notes when runnable, and final designer signoff.
+
+If any required blueprint section is missing for substantial work, return `blocked` or `needs-polish`; do not mark the design `ready`.
 
 ## Build/review workflow
 
 1. Inspect framework, styling, tokens, assets, components, and tests.
-2. Define visual direction and interaction model.
-3. For substantial work, consume specialist handoffs from `@visual-parity-auditor`, `@motion-specialist`, `@accessibility-reviewer`, and `@ui-system-architect` as needed.
-4. Implement/review section-by-section.
-5. Check accessibility: semantics, labels, focus-visible, alt text, touch targets, reduced motion.
-6. Validate with browser screenshots when runnable; for substantial UI/reference work, require reference/current/final captures and section-by-section comparison.
+2. Define the full Design Readiness Gate blueprint for substantial work: experience direction, page map, section specs, component/visual systems, asset decisions, motion map, states, responsive rules, accessibility, and evidence plan.
+3. Use Stitch when it adds value, then adapt the output to existing project tokens/components instead of copying blindly.
+4. For substantial work, consume specialist handoffs from `@visual-parity-auditor`, `@motion-specialist`, `@accessibility-reviewer`, and `@ui-system-architect` as needed.
+5. Implement/review section-by-section and component-by-component against the blueprint.
+6. Check accessibility: semantics, labels, focus-visible, alt text, touch targets, reduced motion.
+7. Validate with browser screenshots when runnable; for substantial UI/reference work, require reference/current/final captures and section-by-section comparison.
 
 ## Google Stitch MCP Design System Gate
 
@@ -46,7 +80,7 @@ For substantial UI/reference/image-heavy work, return one of these statuses: `re
 - `blocked`: missing reference evidence, motion storyboard, icon strategy, asset manifest, image generation decision, or other required visual spec.
 - `needs-polish`: the structure is sound but the design still needs targeted refinement before implementation is called complete.
 
-Required deliverables for substantial work: reference capture report, section anatomy table, visual spec matrix, motion storyboard, icon system matrix, visual density checklist, asset manifest, image generation decision, and final pass/fail comparison.
+Required deliverables for substantial work: experience direction, page-by-page UX blueprint, section-level visual spec matrix, component system plan, visual system, interaction/state design, responsive plan, accessibility gate notes, validation evidence plan, reference capture report when applicable, section anatomy table, motion storyboard, icon system matrix, visual density checklist, asset manifest, image generation decision, and final pass/fail comparison.
 
 ## Animation System Gate
 

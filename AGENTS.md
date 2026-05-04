@@ -56,6 +56,26 @@ For any user-facing frontend, web app, mobile app, dashboard, landing page, form
 7. For substantial UI/reference/image-heavy work, require designer signoff and section-by-section evidence before finalizing.
 8. Do not hardcode device-specific absolute paths in prompts, configs, or scripts; derive absolute paths from the active workspace/project root or portable env-based roots. When OpenCode config files live in a different root than the target app, keep those roots distinct and pass the target app `project_root` explicitly.
 
+## General Design Readiness Gate
+
+For build-from-scratch or substantial UI/UX work, high-level visual direction is not enough. The `@designer` handoff must become a general end-to-end UI/UX Design Blueprint before implementation is called ready. Apply this domain-agnostically to SaaS, dashboards, marketplaces, mobile apps, internal tools, portals, landing pages, and other product surfaces.
+
+Implementation is blocked until the plan/spec includes:
+
+1. **Experience direction** — target users/personas, usage context, device priority, tone/personality, visual richness, visual density, accessibility baseline, and performance expectations.
+2. **Page-by-page UX blueprint** — for each major page/screen: purpose, user goal, primary/secondary actions, information hierarchy, section order, navigation behavior, responsive behavior, and empty/loading/error/success/permission/offline states when relevant.
+3. **Section-level visual specification** — for each important section: role, layout, hierarchy, spacing, typography, color/background treatment, card/list/table/form treatment, CTA placement, imagery/icon usage, interaction behavior, motion behavior, state behavior, and mobile/tablet/desktop behavior.
+4. **Component system plan** — reusable components, variants, states, usage rules, accessibility requirements, responsive behavior, and motion behavior.
+5. **Visual system** — palette roles, typography scale, spacing scale, radius, border, elevation/shadow, icon style, image/illustration style, layout grid, breakpoints, focus states, and light/dark mode rules when relevant.
+6. **Asset and image decision** — per visual area/section: `generate`, `use-provided-assets`, `licensed-existing-assets`, or `no-generation-needed`, with reason, asset type, dimensions, alt-text strategy, legal replacement policy, and integration notes.
+7. **Motion system** — motion purpose, animation API/library choice, per-page/section motion map, interaction motion, loading/success/error motion, reduced-motion fallback, timing/easing guidance, and performance constraints.
+8. **Interaction and state design** — default, hover, focus, active, disabled, loading, empty, error, success, permission denied, unauthenticated, offline/unavailable, partially loaded, skeleton, and validation states where applicable.
+9. **Responsive plan** — mobile/tablet/desktop layout rules, navigation changes, CTA placement, sticky/fixed behavior, data display adaptation, form layout changes, and image crop/ratio behavior.
+10. **Accessibility gate** — semantic headings, keyboard support, visible focus, form labels, contrast, screen-reader behavior for async state when needed, touch target sizing, reduced motion, and no color-only meaning.
+11. **Validation evidence** — screenshots or review evidence by viewport and key states, interaction checks, motion/reduced-motion checks, accessibility notes, console/network notes when runnable, and final designer signoff.
+
+If any required blueprint section is missing for substantial UI work, final status must be `blocked`, `needs-polish`, or `draft`, not `done`.
+
 ## Frontend/mobile animation policy
 
 For website, frontend, mobile app, React/Next, React Native/Expo, Flutter, landing page, dashboard, or reference UI work, use an **Animation System Gate** instead of defaulting to generic fades/slides.

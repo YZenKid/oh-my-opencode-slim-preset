@@ -163,6 +163,8 @@ Untuk UI/reference work:
 4. Image-heavy work butuh asset manifest dan image generation decision.
 5. Generated/provided assets harus punya path relatif, ukuran eksplisit, alt text, dan legal notes.
 
+Untuk build-from-scratch atau substantial UI/UX work, Design Gate harus menjadi general end-to-end UI/UX Design Blueprint sebelum implementasi dianggap siap. Blueprint wajib mencakup experience direction, page-by-page UX blueprint, section-level visual specification, component system plan, visual system, asset and image decision, motion system, interaction/state design, responsive plan, accessibility gate, dan validation evidence. Jika bagian penting hilang, status harus `blocked`, `needs-polish`, atau `draft`, bukan `done`.
+
 Image MCP memakai config-level path portable:
 
 ```json
