@@ -10,7 +10,7 @@ Replicate the target UI from the reference with measurable visual similarity whi
 $ARGUMENTS
 ```
 
-Use the standalone `opencode-orchestrator` workflow for routing. Route visual planning, implementation, or review to `@designer` using `opencode-designer` when available. Use `@explorer` for broad codebase discovery and `@fixer` only for bounded implementation/test edits.
+Use the standalone `opencode-orchestrator` workflow for routing. Route non-trivial planning artifacts to `@artifact-planner` first. Route visual planning, implementation, or review to `@designer` using `opencode-designer` when available. Use `@fixer` only for bounded implementation/test edits after the plan is clear.
 
 ## Required workflow
 

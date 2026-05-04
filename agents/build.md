@@ -22,6 +22,8 @@ permission:
 
 # Build Agent Rules
 
+This agent is retired. Do not route new implementation work here; use `@fixer` for bounded implementation/testing or `@orchestrator` as the router/integrator.
+
 ## Language
 - Use Indonesian for chat, explanations, progress updates, assumptions, and final summaries.
 - Keep code, identifiers, package names, API names, CLI commands, file paths, exact errors, and quoted source text in their original language.

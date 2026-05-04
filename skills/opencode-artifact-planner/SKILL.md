@@ -16,13 +16,14 @@ Use this as the planner’s only workflow. Write planning artifacts only under `
 5. Write one primary plan: `.opencode/plans/<task-id>.md`.
 6. Keep only operationally useful evidence; delete stale drafts after consolidation.
 
-The planner may call informational, read-only, research, and documentation subagents to gather evidence and improve the plan, but it must not call implementation, source-edit, or generation subagents such as fixer, build, designer, or visual-asset-generator. If implementation is requested, write the plan and stop.
+The planner may call informational, read-only, research, and documentation subagents to gather evidence and improve the plan, but it must not call implementation, source-edit, or generation subagents such as fixer, designer, or visual-asset-generator. If implementation is requested, write the plan and stop.
 
 ## Required plan sections
 
 Goal, Non-goals, Scope, Requirements, Acceptance Criteria, Existing Patterns/Reuse, Constraints, Risks, Decisions/Assumptions, TDD/Test Plan, Implementation Steps, Expected Files to Change, Agent/Tool Routing, Validation Commands, Evidence Requirements, Done Criteria, Final Planning Summary.
 
 For UI/reference work also include Visual Spec Summary, Asset Manifest Summary, Image Generation Decision, Reference Capture Requirements, and Visual Comparison Requirements.
+Keep one primary plan file as the durable source of truth; any visual artifacts or extra notes belong in draft/evidence only when operationally useful and should not compete as alternate primary plans.
 For substantial UI/reference/image-heavy work, require a Design Readiness Gate and add blockers for missing motion storyboard, icon matrix, visual density rubric, asset manifest, image generation decision, reference/current captures, and final designer review.
 For portfolio/reference/template work with hero art, portraits, project cards, thumbnails, testimonial/avatar clusters, blog cards, icon badges, or rich backgrounds, assume image-heavy until proven otherwise. The plan must decide `generate`, `use-provided-assets`, `licensed-existing-assets`, or `no-generation-needed` per section; if no licensed/provided assets exist, recommend legal style-equivalent generation instead of CSS placeholders.
 

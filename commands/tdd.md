@@ -1,10 +1,10 @@
 ---
 description: Plan and execute a coding task using TDD
-agent: build
+agent: orchestrator
 model: cliproxyapi/gpt-5.5
 ---
 
-Use strict TDD for this task:
+Use strict TDD for this task. Route implementation to `@fixer` for any non-trivial production code, multi-file change, or test/fixture update. Keep `@orchestrator` as router/integrator; only do direct edits when the change is tiny, trivial, and clearly reversible.
 
 ```text
 $ARGUMENTS
@@ -27,6 +27,7 @@ Workflow:
 Rules:
 
 - Apply TDD to production logic, bug fixes, API behavior, service/use-case behavior, UI interaction behavior, validation logic, and security-sensitive logic.
+- For implementation, prefer routing bounded execution to `@fixer`; do not use `build` for implementation.
 - Do not write production logic before a failing test exists for that behavior.
 - If bug fixing, first add a failing regression test that reproduces the bug.
 - Reuse existing project/KiloCode test helpers, fixtures, factories, mocks, components, and utilities before creating new ones.

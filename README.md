@@ -5,7 +5,7 @@ Preset konfigurasi OpenCode personal dengan plugin `oh-my-opencode-slim`, multi-
 ## Isi Preset
 
 - `opencode.json` — konfigurasi provider, model, MCP, plugin, agent bawaan yang dinonaktifkan, dan override eksplisit `council` sebagai subagent.
-- `oh-my-opencode-slim.json` — mapping model, skill, MCP, dan council preset untuk agent `oh-my-opencode-slim`, termasuk `disabled_agents` agar council bawaan plugin tidak digenerasi.
+- `oh-my-opencode-slim.json` — mapping model, skill, MCP, dan council preset untuk agent `oh-my-opencode-slim`, termasuk `disabled_agents` agar council bawaan plugin tidak digenerasi; council lokal tetap aktif sebagai subagent.
 - `.env.example` — template environment variable tanpa secret.
 - `.gitignore` — melindungi `.env` dan file lokal/generated.
 - `skills/` dan `.agents/skills/` — skill tambahan untuk OpenCode/agent.
@@ -13,8 +13,10 @@ Preset konfigurasi OpenCode personal dengan plugin `oh-my-opencode-slim`, multi-
 
 ## Agent Mapping dan Boundary
 
-- `@orchestrator` — routing utama untuk tugas umum, delegasi, dan validasi.
+- `@orchestrator` — router/integrator utama untuk tugas umum, delegasi, dan validasi; bukan penulis serba bisa.
 - `@fixer` — implementasi bounded, test, fixture, dan refactor kecil.
+- `build` — retired.
+- `general` — retired/disabled mental model; jangan diaktifkan sebagai model invalid.
 - `@skill-improver` — checkpoint pasca-tugas non-trivial untuk memperbaiki prompt, routing, references, dan eval secara kecil dan evidence-based.
 - `@designer`, `@oracle`, `@explorer`, `@librarian`, `@document-specialist`, `@visual-asset-generator`, `@council` — tetap mengikuti boundary masing-masing.
 - `@skill-improver` tidak wajib dipanggil setelah setiap tugas; gunakan hanya saat ada pola berulang, kegagalan berulang, gap kebijakan, atau permintaan eksplisit.
@@ -37,7 +39,7 @@ Script ini memvalidasi:
 - agent architecture rules: primary agents via `mode: primary`, subagents via `mode: subagent`, `disable: true`, dan `hidden: true` untuk autocomplete bila didukung,
 - routing checkpoint untuk `@skill-improver` setelah tugas non-trivial / repeated failures / policy gaps / explicit request, tanpa menjadikannya wajib untuk tugas trivial,
 - safety gate `skill-improver`: no `.env`/secret access, no blind external updates, no broad rewrite tanpa approval, no prompt bloat, dan no instruction conflicts,
-- current architecture summary: plugin `oh-my-opencode-slim` hardcodes council menjadi `mode: all` setelah override; fix-nya adalah mematikan council bawaan lewat `disabled_agents` dan memakai `agents/council.md` sebagai subagent lokal sehingga council tidak muncul di primary agent switcher; built-in `build` dan `plan` dimatikan/di-hide sejauh didukung,
+- current architecture summary: plugin `oh-my-opencode-slim` hardcodes council menjadi `mode: all` setelah override; fix-nya adalah mematikan council bawaan lewat `disabled_agents` dan memakai `agents/council.md` sebagai subagent lokal sehingga council tidak muncul di primary agent switcher; `build` retired, `general` retired/disabled, dan orchestrator diposisikan sebagai router/integrator,
 - MCP `image-asset-generator` tidak memakai path relatif rapuh,
 - `artifact-planner` dapat memanggil subagent informasi/read-only/research/dokumentasi yang diizinkan: `explorer`, `librarian`, `oracle`, `council`, `observer`, `document-specialist`,
 - `artifact-planner` tidak bisa memanggil subagent implementasi/source-edit/generation seperti `fixer`, `build`, `designer`, atau `visual-asset-generator`,
@@ -456,8 +458,9 @@ Arsitektur preset saat ini:
 - `default_agent` adalah `orchestrator`.
 - Built-in `build` dan `plan` dinonaktifkan di `opencode.json`.
 - Built-in `general` dan `explore` juga dinonaktifkan.
-- `build` custom masih ada sebagai hidden subagent untuk bounded implementation jika benar-benar diroute oleh orchestrator.
-- `council` adalah subagent untuk multi-model consensus, bukan primary agent.
+- `build` custom dianggap retired; jangan route implementation baru ke agent ini.
+- `general` dianggap retired/disabled; jangan diaktifkan tanpa mengganti model ke provider valid dan mendefinisikan use case baru.
+- `council` adalah local subagent untuk multi-model consensus, bukan primary agent; `disabled_agents: ["council"]` hanya mematikan duplicate/plugin-generated council.
 
 Preset `oh-my-opencode-slim` memakai agent/subagent berikut:
 
@@ -703,3 +706,4 @@ Atau simpan auto-load di `~/.zshrc` seperti bagian setup environment.
 - Pakai fine-grained GitHub token dan batasi repository access.
 - Jangan memberi write permission GitHub jika hanya butuh read-only context.
 - Jika secret pernah ter-commit, anggap bocor dan revoke/regenerate token.
+- Ringkasan keputusan: build retired dan general retired; implementation/testing diarahkan ke `@fixer`, sementara `@orchestrator` menjadi router/integrator.

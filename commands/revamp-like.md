@@ -10,7 +10,7 @@ Revamp the current UI to closely match this reference while preserving the proje
 $ARGUMENTS
 ```
 
-Use the standalone `opencode-orchestrator` workflow and delegate visual implementation/review to `@designer` using `opencode-designer` when appropriate.
+Use the standalone `opencode-orchestrator` workflow. Route non-trivial planning artifacts to `@artifact-planner` first, then delegate visual implementation/review to `@designer` using `opencode-designer` when appropriate. Use `@fixer` for bounded implementation/test edits once the plan is stable.
 
 ## Workflow
 

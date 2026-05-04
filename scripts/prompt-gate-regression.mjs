@@ -31,11 +31,8 @@ const checks = [
     name: "agent architecture selection gate",
     mustInclude: [
       '"default_agent": "orchestrator"',
-      '"build": {',
-      '"disable": true',
       '"plan": {',
       '"explore": {',
-      '"general": {',
     ],
   },
   {
@@ -86,7 +83,7 @@ const checks = [
       "assume image-heavy until the visual spec proves otherwise",
       "legal style-equivalent generation by default",
       "informational, read-only, research, and documentation subagents",
-      "fixer, build, designer, or visual-asset-generator",
+      "fixer, designer, or visual-asset-generator",
       "write the plan and stop",
     ],
   },
@@ -95,7 +92,7 @@ const checks = [
     name: "artifact planner standalone skill gate",
     mustInclude: [
       "informational, read-only, research, and documentation subagents",
-      "fixer, build, designer, or visual-asset-generator",
+      "fixer, designer, or visual-asset-generator",
       "write the plan and stop",
       "Design Readiness Gate",
       "motion storyboard",
@@ -116,17 +113,19 @@ const checks = [
     name: "orchestrator primary mode gate",
     mustInclude: [
       "mode: primary",
+      "router/integrator",
+      "direct edits only when the change is tiny",
       "do not issue a final completion claim",
       "@skill-improver",
     ],
   },
   {
     file: "agents/build.md",
-    name: "build subagent hidden gate",
+    name: "build subagent retired gate",
     mustInclude: [
       "mode: subagent",
       "hidden: true",
-      "Hidden build/implementation subagent",
+      "retired",
     ],
   },
   {
@@ -337,6 +336,8 @@ const checks = [
       "policy gaps",
       "explicit request",
       "no blind external updates",
+      "build retired",
+      "general retired",
     ],
   },
   {
