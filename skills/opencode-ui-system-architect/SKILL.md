@@ -12,7 +12,7 @@ description: Standalone read-only skill for UI system architecture, tokens, comp
 - Mark the result `ready`, `needs-polish`, or `blocked`.
 - Stay read-only; do not edit files.
 
-## Open Design-style system review
+## Smart design-system review
 
 Use this lane when the work needs design-system reasoning rather than direct UI implementation. Inspect existing project tokens, components, styling conventions, breakpoints, icon systems, and accessibility patterns before proposing anything new.
 

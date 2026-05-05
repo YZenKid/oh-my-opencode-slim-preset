@@ -36,7 +36,7 @@ Prompts must be written like a professional art director, not as generic tags. R
 
 Return generated/failed metadata, paths, dimensions, prompts used, alt text, legal notes, warnings, and integration notes. Require integrated browser screenshots and designer review before visual parity claims.
 
-## Open Design-style asset gate
+## Smart asset gate
 
 For image-heavy UI, require a section-aware manifest before generation. Each job must include section title/description, semantic subject, placement notes, dimensions or aspect ratio, art direction, palette and lighting notes, target path relative to the target app root, alt/decorative strategy, legal note, and rejection criteria.
 

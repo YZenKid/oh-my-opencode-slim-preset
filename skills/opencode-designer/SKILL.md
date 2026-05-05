@@ -7,9 +7,9 @@ description: Standalone UI/UX and visual parity workflow for designer. Use for f
 
 Use this as the designer’s self-contained UI/UX manual.
 
-## Open Design adaptation
+## Smart UI artifact workflow
 
-- Treat Open Design as a workflow model to adapt, not text to copy.
+- Use an artifact-first design workflow that makes the agent behave like a senior product designer with a clear brief, design-system context, craft rules, and validation evidence.
 - Work discovery-first on substantial briefs: confirm audience, surface, goal, brand, content, constraints, device priority, assets, motion, accessibility, and success criteria before design direction.
 - For tiny, reversible tweaks, you may proceed with light assumptions.
 
@@ -59,7 +59,7 @@ Required blueprint sections:
 
 ## DESIGN.md / design-system contract
 
-- Use the Open Design 9-section DESIGN.md mental model for design-system reasoning: visual atmosphere, color roles, typography rules, component styling, layout principles, depth/elevation, do/don't rules, responsive behavior, and agent prompt guidance.
+- Use a 9-section DESIGN.md mental model for design-system reasoning: visual atmosphere, color roles, typography rules, component styling, layout principles, depth/elevation, do/don't rules, responsive behavior, and agent prompt guidance.
 - Map design-system input to existing project tokens, components, and breakpoints first; extend only when gaps are real.
 - Existing project design systems and tokens win over generic taste.
 
