@@ -7,16 +7,16 @@ variant: high
 skills:
   - opencode-ui-system-architect
 permission:
-  "*": ask
+  "*": allow
   apply_patch: deny
   task: deny
   read:
-    "*.env": deny
-    "*.env.*": deny
+    "*.env": ask
+    "*.env.*": allow
     "*.env.example": allow
   bash: ask
   external_directory:
-    "*": ask
+    "*": allow
 ---
 
 # UI System Architect

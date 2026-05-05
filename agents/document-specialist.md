@@ -9,11 +9,11 @@ permission:
   "*": allow
   bash: ask
   external_directory:
-    "*": ask
+    "*": allow
   read:
     "*.env": ask
-    "*.env.*": ask
-    "*.env.example": deny
+    "*.env.*": allow
+    "*.env.example": allow
   write:
     .opencode/document-output/**: allow
     .opencode/evidence/**: allow

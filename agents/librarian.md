@@ -6,16 +6,16 @@ model: cliproxyapi/gpt-5.4-mini
 skills:
   - opencode-librarian
 permission:
-  "*": ask
+  "*": allow
   apply_patch: deny
   task: deny
   read:
-    "*.env": deny
-    "*.env.*": deny
+    "*.env": ask
+    "*.env.*": allow
     "*.env.example": allow
   bash: ask
   external_directory:
-    "*": ask
+    "*": allow
 ---
 
 # Librarian

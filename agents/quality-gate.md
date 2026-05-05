@@ -6,10 +6,10 @@ model: cliproxyapi/gpt-5.5
 skills:
   - opencode-quality-gate
 permission:
-  "*": ask
+  "*": allow
   read:
-    "*.env": deny
-    "*.env.*": deny
+    "*.env": ask
+    "*.env.*": allow
     "*.env.example": allow
   skill:
     "*": deny
@@ -18,7 +18,7 @@ permission:
   task: deny
   bash: ask
   external_directory:
-    "*": ask
+    "*": allow
     "{env:HOME}/.local/share/opencode/tool-output/*": allow
     "{env:HOME}/.config/opencode/skills/opencode-quality-gate/*": allow
 ---

@@ -14,8 +14,10 @@ permission:
   task: deny
   read:
     "*.env": ask
-    "*.env.*": ask
+    "*.env.*": allow
     "*.env.example": allow
+  external_directory:
+    "*": allow
 ---
 
 # Visual Asset Generator

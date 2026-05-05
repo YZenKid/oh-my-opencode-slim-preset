@@ -6,7 +6,7 @@ permission:
   "*": allow
   doom_loop: ask
   external_directory:
-    "*": ask
+    "*": allow
     /home/ujang/.local/share/opencode/tool-output/*: allow
     /home/ujang/.agents/skills/simplify/*: allow
     /home/ujang/.agents/skills/agent-browser/*: allow
@@ -29,7 +29,7 @@ permission:
   plan_enter: deny
   read:
     "*.env": ask
-    "*.env.*": ask
+    "*.env.*": allow
     "*.env.example": allow
   edit:
     "*": deny

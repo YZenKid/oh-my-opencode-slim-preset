@@ -6,16 +6,16 @@ model: cliproxyapi/gpt-5.4-mini
 skills:
   - opencode-skill-improver
 permission:
-  "*": ask
+  "*": allow
   skill:
     "*": deny
     opencode-skill-improver: allow
   read:
     "*.env": ask
-    "*.env.*": ask
+    "*.env.*": allow
     "*.env.example": allow
   external_directory:
-    "*": ask
+    "*": allow
     "{env:HOME}/.local/share/opencode/tool-output/*": allow
     "{env:HOME}/.config/opencode/skills/opencode-skill-improver/*": allow
   bash: ask

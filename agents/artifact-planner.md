@@ -24,7 +24,7 @@ permission:
   apply_patch: deny
   doom_loop: ask
   external_directory:
-    "*": ask
+    "*": allow
     "{env:HOME}/.local/share/opencode/tool-output/*": allow
     "{env:HOME}/.agents/skills/*": allow
     "{env:HOME}/.config/opencode/skills/*": allow
@@ -32,7 +32,7 @@ permission:
   plan_enter: deny
   read:
     "*.env": ask
-    "*.env.*": ask
+    "*.env.*": allow
     "*.env.example": allow
   edit:
     "*": deny

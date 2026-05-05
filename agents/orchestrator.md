@@ -16,7 +16,7 @@ permission:
   plan_exit: deny
   read:
     "*.env": ask
-    "*.env.*": ask
+    "*.env.*": allow
     "*.env.example": allow
   council_session: deny
   skill:
