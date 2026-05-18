@@ -111,6 +111,7 @@ function main() {
     OPENCODE_MODEL_EXECUTION: env.OPENCODE_MODEL_EXECUTION,
     OPENCODE_MODEL_DISCOVERY: env.OPENCODE_MODEL_DISCOVERY,
     OPENCODE_MODEL_IMPROVEMENT: env.OPENCODE_MODEL_IMPROVEMENT,
+    OPENCODE_MODEL_FAST: env.OPENCODE_MODEL_FAST,
   };
 
   const missing = Object.entries(modelVars)
@@ -128,14 +129,15 @@ function main() {
     ["agents/orchestrator.md", env.OPENCODE_MODEL_ORCHESTRATOR],
     ["agents/artifact-planner.md", env.OPENCODE_MODEL_PLANNER],
     ["agents/designer.md", env.OPENCODE_MODEL_DESIGN],
+    ["agents/visual-asset-generator.md", env.OPENCODE_MODEL_DESIGN],
     ["agents/oracle.md", env.OPENCODE_MODEL_REVIEW],
     ["agents/quality-gate.md", env.OPENCODE_MODEL_REVIEW],
     ["agents/council.md", env.OPENCODE_MODEL_REVIEW],
     ["agents/architect.md", env.OPENCODE_MODEL_ADVISORY],
     ["agents/fixer.md", env.OPENCODE_MODEL_EXECUTION],
     ["agents/explorer.md", env.OPENCODE_MODEL_DISCOVERY],
-    ["agents/librarian.md", env.OPENCODE_MODEL_DISCOVERY],
-    ["agents/skill-improver.md", env.OPENCODE_MODEL_IMPROVEMENT],
+    ["agents/librarian.md", env.OPENCODE_MODEL_FAST],
+    ["agents/skill-improver.md", env.OPENCODE_MODEL_FAST],
   ];
 
   const changes = [];

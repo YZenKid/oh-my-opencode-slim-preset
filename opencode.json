@@ -49,6 +49,46 @@
             }
           }
         },
+        "medium": {
+          "name": "Medium",
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 400000,
+            "input": 272000,
+            "output": 128000
+          },
+          "variants": {
+            "medium": {
+              "reasoningEffort": "medium",
+              "textVerbosity": "medium",
+              "reasoningSummary": "auto"
+            },
+            "high": {
+              "reasoningEffort": "high",
+              "textVerbosity": "high",
+              "reasoningSummary": "auto"
+            },
+            "xhigh": {
+              "reasoningEffort": "xhigh",
+              "textVerbosity": "high",
+              "reasoningSummary": "auto"
+            },
+            "low": {
+              "reasoningEffort": "low",
+              "textVerbosity": "low",
+              "reasoningSummary": "auto"
+            }
+          }
+        },
         "low": {
           "name": "Low",
           "attachment": true,
@@ -89,8 +129,8 @@
             }
           }
         },
-        "medium": {
-          "name": "Medium",
+        "fast": {
+          "name": "Fast",
           "attachment": true,
           "modalities": {
             "input": [
@@ -102,31 +142,8 @@
             ]
           },
           "limit": {
-            "context": 400000,
-            "input": 272000,
-            "output": 128000
-          },
-          "variants": {
-            "medium": {
-              "reasoningEffort": "medium",
-              "textVerbosity": "medium",
-              "reasoningSummary": "auto"
-            },
-            "high": {
-              "reasoningEffort": "high",
-              "textVerbosity": "high",
-              "reasoningSummary": "auto"
-            },
-            "xhigh": {
-              "reasoningEffort": "xhigh",
-              "textVerbosity": "high",
-              "reasoningSummary": "auto"
-            },
-            "low": {
-              "reasoningEffort": "low",
-              "textVerbosity": "low",
-              "reasoningSummary": "auto"
-            }
+            "context": 200000,
+            "output": 64000
           }
         },
         "cx/gpt-5.5-image": {

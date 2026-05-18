@@ -2,7 +2,7 @@
 mode: subagent
 hidden: false
 description: UI/UX implementation and review lane for polished visuals, motion direction/reduced-motion review, accessibility, and visual polish
-model: cliproxyapi/medium
+model: cliproxyapi/high
 skills:
   - opencode-designer
 permission:

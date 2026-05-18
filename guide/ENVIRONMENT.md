@@ -28,19 +28,33 @@ GITHUB_TOOLSETS="context,repos,issues,pull_requests,actions,code_security"
 OPENCODE_MODEL_DEFAULT="cliproxyapi/low"
 OPENCODE_MODEL_ORCHESTRATOR="cliproxyapi/medium"
 OPENCODE_MODEL_PLANNER="cliproxyapi/high"
-OPENCODE_MODEL_DESIGN="cliproxyapi/medium"
+OPENCODE_MODEL_DESIGN="cliproxyapi/high"
 OPENCODE_MODEL_REVIEW="cliproxyapi/medium"
 OPENCODE_MODEL_ADVISORY="cliproxyapi/medium"
 OPENCODE_MODEL_EXECUTION="cliproxyapi/medium"
 OPENCODE_MODEL_DISCOVERY="cliproxyapi/low"
 OPENCODE_MODEL_DOCUMENTS="cliproxyapi/low"
-OPENCODE_MODEL_IMPROVEMENT="cliproxyapi/low"
+OPENCODE_MODEL_IMPROVEMENT="cliproxyapi/fast"
+OPENCODE_MODEL_FAST="cliproxyapi/fast"
 IMAGE_ASSET_MODEL="cx/gpt-5.5-image"
 IMAGE_ASSET_DEFAULT_SIZE="1024x1024"
 IMAGE_ASSET_DEFAULT_BACKGROUND="auto"
 ```
 
 Copy `.env.example` to `.env` and set every `OPENCODE_MODEL_*` value before launching OpenCode. Missing env vars resolve to an empty string, which can break OpenCode model routing.
+
+Agent frontmatter still keeps literal `model:` values. `scripts/sync-agent-models.mjs` is source that syncs those literals from `.env`, so after changing `OPENCODE_MODEL_*` you should run:
+
+```bash
+npm run sync:agent-models
+```
+
+Current routing notes:
+
+- `OPENCODE_MODEL_DESIGN` now drives `@designer` and `@visual-asset-generator`, and recommended default is `cliproxyapi/high`.
+- `OPENCODE_MODEL_DISCOVERY` now only drives `@explorer`.
+- `OPENCODE_MODEL_FAST` now drives `@librarian` and `@skill-improver`.
+- `OPENCODE_MODEL_IMPROVEMENT` remains as compatibility alias and recommended default is also `cliproxyapi/fast`.
 
 ## Wajib vs opsional
 

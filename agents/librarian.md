@@ -2,7 +2,7 @@
 mode: subagent
 hidden: false
 description: Library/docs research plus document-centric read-only extraction and transformation support
-model: cliproxyapi/low
+model: cliproxyapi/fast
 skills:
   - opencode-librarian
 permission:

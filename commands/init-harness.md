@@ -1,7 +1,7 @@
 ---
 description: Initialize or update the current project's AGENTS.md for the harness workflow
 agent: orchestrator
-model: cliproxyapi/gpt-5.4
+model: cliproxyapi/high
 ---
 
 Initialize a project-local `AGENTS.md` for the current target project so it matches the current harness workflow and rules.
