@@ -12,6 +12,7 @@
         "high": {
           "name": "High",
           "attachment": true,
+          "reasoning": true,
           "modalities": {
             "input": [
               "text",
@@ -52,6 +53,7 @@
         "medium": {
           "name": "Medium",
           "attachment": true,
+          "reasoning": true,
           "modalities": {
             "input": [
               "text",
@@ -92,6 +94,7 @@
         "low": {
           "name": "Low",
           "attachment": true,
+          "reasoning": true,
           "modalities": {
             "input": [
               "text",

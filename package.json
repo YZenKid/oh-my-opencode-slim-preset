@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
+    "@opencode-ai/plugin": "1.14.50",
     "openai": "^6.35.0",
     "sharp": "^0.34.5",
     "zod": "^4.4.1"
