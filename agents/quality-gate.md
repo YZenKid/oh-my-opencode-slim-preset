@@ -2,7 +2,7 @@
 mode: subagent
 hidden: false
 description: Final conformance and risk gate for non-trivial OpenCode work
-model: cliproxyapi/medium
+model: cliproxyapi/low
 skills:
   - opencode-quality-gate
 permission:

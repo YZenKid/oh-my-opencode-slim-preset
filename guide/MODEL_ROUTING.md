@@ -38,10 +38,12 @@ npm run post:update
 | `OPENCODE_MODEL_DEFAULT` | `cliproxyapi/low` | Top-level default model and general fallback | Keep the baseline lane low-cost for broad default routing. |
 | `OPENCODE_MODEL_ORCHESTRATOR` | `cliproxyapi/medium` | `@orchestrator` primary routing/integration | Use a balanced lane for delegation, coordination, and synthesis. |
 | `OPENCODE_MODEL_PLANNER` | `cliproxyapi/high` | `@artifact-planner`, `modes/plan.md`, `agents-disabled/plan.md` | Keep planning on the strongest lane for higher-accuracy specs and execution handoffs. |
-| `OPENCODE_MODEL_DESIGN` | `cliproxyapi/high` | `@designer`, `@visual-asset-generator` | Design reasoning, visual hierarchy, motion, accessibility, and art-direction asset jobs use the high lane. |
-| `OPENCODE_MODEL_REVIEW` | `cliproxyapi/medium` | `@oracle`, `@quality-gate`, `@council` | Keep review quality solid without defaulting to the highest-cost lane. |
+| `OPENCODE_MODEL_DESIGN` | `cliproxyapi/high` | `@designer` | Keep substantial UI/design reasoning, motion, and accessibility work on the high lane. |
+| `OPENCODE_MODEL_VISUAL_ASSET` | `cliproxyapi/medium` | `@visual-asset-generator` | Keep visual asset manifest prep and legal style-equivalent generation routing on medium while leaving designer on high. |
+| `OPENCODE_MODEL_REVIEW` | `cliproxyapi/medium` | `@oracle`, `@council` | Keep advisory/review reasoning on a balanced lane without degrading high-confidence review paths. |
+| `OPENCODE_MODEL_QUALITY_GATE` | `cliproxyapi/low` | `@quality-gate` | Final conformance gate stays cheap and explicit without forcing `@oracle`/`@council` down. |
 | `OPENCODE_MODEL_ADVISORY` | `cliproxyapi/medium` | `@architect` | Use a balanced lane for advisory and architecture guidance. |
-| `OPENCODE_MODEL_EXECUTION` | `cliproxyapi/medium` | `@fixer` | Keep bounded implementation and testing on a balanced lane. |
+| `OPENCODE_MODEL_EXECUTION` | `cliproxyapi/low` | `@fixer` | Keep bounded implementation and testing on lower-cost lane. |
 | `OPENCODE_MODEL_DISCOVERY` | `cliproxyapi/low` | `@explorer` | Local discovery and read-only pattern analysis stay on the cheaper lane. |
 | `OPENCODE_MODEL_DOCUMENTS` | `cliproxyapi/low` | Reserved compatibility lane (document-centric work now routes via `@librarian`) | Keep for env compatibility on the cheaper lane. |
 | `OPENCODE_MODEL_IMPROVEMENT` | `cliproxyapi/fast` | Compatibility alias (agent mapping now uses `OPENCODE_MODEL_FAST`) | Kept for env compatibility; recommended default aligned to fast. |

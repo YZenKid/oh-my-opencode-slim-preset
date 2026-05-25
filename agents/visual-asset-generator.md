@@ -1,7 +1,7 @@
 ---
 mode: subagent
 description: Plans and prepares legal style-equivalent visual asset generation jobs for image-heavy UI, reference replication, hero art, icon badges, product mockups, thumbnails, avatars, and background textures. If image-generation tools are available in-session, it may execute generation; otherwise generation is executed by the orchestrator via an image generation tool/endpoint.
-model: cliproxyapi/high
+model: cliproxyapi/medium
 skills:
   - opencode-visual-asset-generator
 permission:

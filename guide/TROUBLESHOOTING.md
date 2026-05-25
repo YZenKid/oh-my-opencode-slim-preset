@@ -38,7 +38,7 @@ Isi semua value penting, terutama:
 
 - `CLIPROXYAPI_BASE_URL`
 - `CLIPROXYAPI_API_KEY`
-- semua `OPENCODE_MODEL_*`
+- semua `OPENCODE_MODEL_*`, termasuk `OPENCODE_MODEL_VISUAL_ASSET` dan `OPENCODE_MODEL_QUALITY_GATE`
 
 ## RTK atau Caveman belum tersedia
 

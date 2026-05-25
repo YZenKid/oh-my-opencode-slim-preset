@@ -14,7 +14,7 @@
 
 | Script | Fungsi | Kapan dipakai |
 |---|---|---|
-| `npm run sync:agent-models` | Menyamakan `model:` di `agents/*.md` dengan `OPENCODE_MODEL_*` dari `.env` | Setelah mengubah model di `.env` |
+| `npm run sync:agent-models` | Menyamakan `model:` di `agents/*.md` dengan `OPENCODE_MODEL_*` dari `.env`, termasuk split khusus `OPENCODE_MODEL_VISUAL_ASSET` dan `OPENCODE_MODEL_QUALITY_GATE` | Setelah mengubah model di `.env` |
 | `npm run sync:agent-models:check` | Cek read-only apakah model agent sudah sinkron dengan `.env` | Untuk audit atau validasi CI/manual |
 | `npm run sync:openchamber` | Menyinkronkan setting OpenChamber agar mengikuti config OpenCode sebagai source of truth; `defaultModel` diarahkan ke model orchestrator untuk new session, plus menulis metadata `opencodeAgentModelMap` untuk mirror routing agent | Saat `doctor` memberi warning OpenChamber out of sync |
 | `npm run sync:openchamber:check` | Cek read-only sync OpenChamber | Saat hanya ingin audit tanpa menulis file |

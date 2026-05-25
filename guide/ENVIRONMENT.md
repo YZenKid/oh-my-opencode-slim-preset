@@ -29,9 +29,11 @@ OPENCODE_MODEL_DEFAULT="cliproxyapi/low"
 OPENCODE_MODEL_ORCHESTRATOR="cliproxyapi/medium"
 OPENCODE_MODEL_PLANNER="cliproxyapi/high"
 OPENCODE_MODEL_DESIGN="cliproxyapi/high"
+OPENCODE_MODEL_VISUAL_ASSET="cliproxyapi/medium"
 OPENCODE_MODEL_REVIEW="cliproxyapi/medium"
+OPENCODE_MODEL_QUALITY_GATE="cliproxyapi/low"
 OPENCODE_MODEL_ADVISORY="cliproxyapi/medium"
-OPENCODE_MODEL_EXECUTION="cliproxyapi/medium"
+OPENCODE_MODEL_EXECUTION="cliproxyapi/low"
 OPENCODE_MODEL_DISCOVERY="cliproxyapi/low"
 OPENCODE_MODEL_DOCUMENTS="cliproxyapi/low"
 OPENCODE_MODEL_IMPROVEMENT="cliproxyapi/fast"
@@ -51,7 +53,11 @@ npm run sync:agent-models
 
 Current routing notes:
 
-- `OPENCODE_MODEL_DESIGN` now drives `@designer` and `@visual-asset-generator`, and recommended default is `cliproxyapi/high`.
+- `OPENCODE_MODEL_DESIGN` now drives `@designer` and recommended default is `cliproxyapi/high`.
+- `OPENCODE_MODEL_VISUAL_ASSET` now drives `@visual-asset-generator` and recommended default is `cliproxyapi/medium`.
+- `OPENCODE_MODEL_REVIEW` now stays scoped to `@oracle` and `@council`.
+- `OPENCODE_MODEL_QUALITY_GATE` now drives `@quality-gate` and recommended default is `cliproxyapi/low`.
+- `OPENCODE_MODEL_EXECUTION` now drives `@fixer` and recommended default is `cliproxyapi/low`.
 - `OPENCODE_MODEL_DISCOVERY` now only drives `@explorer`.
 - `OPENCODE_MODEL_FAST` now drives `@librarian` and `@skill-improver`.
 - `OPENCODE_MODEL_IMPROVEMENT` remains as compatibility alias and recommended default is also `cliproxyapi/fast`.

@@ -12,10 +12,10 @@ Generated summary of local agent metadata. This file is advisory and must not re
 | council | subagent | cliproxyapi/medium | none | Multi-LLM consensus engine for high-confidence answers |
 | designer | subagent | cliproxyapi/high | none | UI/UX implementation and review lane for polished visuals, motion direction/reduced-motion review, accessibility, and visual polish |
 | explorer | subagent | cliproxyapi/low | none | Local codebase discovery and search specialist for unfamiliar or broad scopes |
-| fixer | subagent | cliproxyapi/medium | none | Bounded implementation and testing specialist for Red/Green/Refactor work |
+| fixer | subagent | cliproxyapi/low | none | Bounded implementation and testing specialist for Red/Green/Refactor work |
 | librarian | subagent | cliproxyapi/fast | none | Library/docs research plus document-centric read-only extraction and transformation support |
 | oracle | subagent | cliproxyapi/medium | none | Read-only architecture and risk review advisor for complex decisions |
 | orchestrator | primary | cliproxyapi/medium | none | AI coding orchestrator that routes tasks to specialist agents |
-| quality-gate | subagent | cliproxyapi/medium | none | Final conformance and risk gate for non-trivial OpenCode work |
+| quality-gate | subagent | cliproxyapi/low | none | Final conformance and risk gate for non-trivial OpenCode work |
 | skill-improver | subagent | cliproxyapi/fast | none | Bounded post-task skill improvement subagent for prompt, routing, and eval refinement. |
-| visual-asset-generator | subagent | cliproxyapi/high | none | Plans and prepares legal style-equivalent visual asset generation jobs for image-heavy UI, reference replication, hero art, icon badges, product mockups, thumbnails, avatars, and background textures. If image-generation tools are available in-session, it may execute generation; otherwise generation is executed by the orchestrator via an image generation tool/endpoint. |
+| visual-asset-generator | subagent | cliproxyapi/medium | none | Plans and prepares legal style-equivalent visual asset generation jobs for image-heavy UI, reference replication, hero art, icon badges, product mockups, thumbnails, avatars, and background textures. If image-generation tools are available in-session, it may execute generation; otherwise generation is executed by the orchestrator via an image generation tool/endpoint. |
