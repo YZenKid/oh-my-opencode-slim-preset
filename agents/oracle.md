@@ -51,6 +51,7 @@ Read-only advisory lane for architecture review, simplification, and high-stakes
 4. Recommend a path with rationale.
 
 ## Output contract
+- Typed fields: `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
 - Recommended decision and why.
 - Alternatives rejected and tradeoffs.
 - Risks/mitigations and follow-up validation.

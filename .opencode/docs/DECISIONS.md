@@ -23,3 +23,10 @@
 - The strict golden path for proof-of-use is documented in `.opencode/docs/QUALITY.md` so maintainers can replay a small end-to-end harness success path.
 - Generated-doc freshness is now mechanically enforced through `npm run docs:generate:check` and included in docs-integrity validation to reduce silent drift.
 - The generated-doc parser remains intentionally lightweight but now relies on simpler structure-aware extraction instead of a single broad regex pass.
+
+## 2026-05-26 — OMP adoption posture (OpenCode-aligned)
+- Custom capybara lanes remain canonical routing/execution topology.
+- Built-in OpenCode `build`/`plan`/`explore`/`general` remain non-default and opt-in only for compatibility/comparator experiments.
+- `@artifact-planner` stays the only source of truth for artifact-writing plans under `.opencode/plans/*.md`.
+- Contract baseline across active docs/agents/skills now requires typed output schema fields: `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
+- Contract baseline now requires validation ladder sequence plus LSP-first policy with explicit fallback evidence when LSP is unavailable.

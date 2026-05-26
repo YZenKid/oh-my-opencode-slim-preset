@@ -50,6 +50,7 @@ Read-only helper lane for codebase discovery, symbol mapping, and reuse candidat
 4. Summarize reuse opportunities and unknowns.
 
 ## Output contract
+- Typed fields: `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
 - Findings with concrete file references.
 - Reuse candidates and notable constraints.
 - Unresolved questions requiring another lane.

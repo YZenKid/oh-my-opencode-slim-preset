@@ -64,6 +64,11 @@ Use this quick rubric for real workflow audits:
 Score guidance: 5/5 = strong routing discipline; 3–4/5 = acceptable with minor drift; ≤2/5 = routing failure requiring remediation.
 
 ## Core agents (default operating model)
+
+Cross-lane contract baseline (non-trivial work):
+- Typed output schema fields: `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
+- Validation ladder: plan/handoff check → discovery/research evidence → implementation/docs change → diff review → targeted validation commands → `@quality-gate` for non-trivial/risky completion claims.
+- LSP-first for rename/refactor/navigation/diagnostic-driven edits where available; fallback to `glob`/`grep`/`read` + minimal edits must be recorded in evidence when confidence drops.
 - `@orchestrator` — router, integrator, final coordinator
 - `@explorer` — codebase discovery and reuse mapping
 - `@fixer` — bounded implementation, tests, Red/Green/Refactor

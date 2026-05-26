@@ -39,3 +39,8 @@ User Intent
 - agent and skill boundary contracts,
 - evidence contract compliance,
 - environment and repo health via `doctor`.
+
+## OMP adoption posture (local)
+- Canonical runtime lanes remain local capybara lanes.
+- Built-in OpenCode `build`/`plan`/`explore`/`general` are comparator/experiment opt-in only, not default routing.
+- Contract baseline requires typed outputs + validation ladder + LSP-first execution policy across active lanes.

@@ -52,9 +52,14 @@ Bounded implementation helper lane for code changes, tests, fixtures, and TDD ex
 4. Run validation and refactor for clarity/safety.
 
 ## Output contract
+- Typed fields: `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
 - Files changed and behavior delivered.
 - Tests/validation run and outcomes.
 - Risks, follow-ups, or assumptions.
+
+## Execution policy
+- Validation ladder: plan/handoff check -> discovery evidence -> implementation -> diff review -> validation commands -> route non-trivial/risky completion to `@quality-gate`.
+- LSP-first for rename/refactor/navigation/diagnostic-driven edits when available; fallback path must be recorded in evidence.
 
 ## Stop / escalation conditions
 - Missing requirements or contradictory acceptance criteria.

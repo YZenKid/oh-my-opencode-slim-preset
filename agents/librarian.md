@@ -50,6 +50,7 @@ Read-only supporting helper lane for version-sensitive docs/API research and doc
 4. Highlight implications for implementation/planning.
 
 ## Output contract
+- Typed fields: `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
 - Concise findings and recommendations.
 - Source references used.
 - Confidence/limitations and unresolved gaps.

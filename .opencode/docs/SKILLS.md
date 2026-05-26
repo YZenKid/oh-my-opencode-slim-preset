@@ -31,3 +31,7 @@ Every skill should provide:
 - allowed/forbidden posture where relevant,
 - evidence/output expectations when relevant,
 - failure or limitation handling when relevant.
+
+Active-lane schema baseline (non-trivial work):
+- `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
+- Validation ladder and LSP-first posture must be explicit where lane owns implementation, routing, review, or quality gate.

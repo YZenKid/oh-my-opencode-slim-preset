@@ -62,6 +62,12 @@ Use this lightweight end-to-end path to prove the harness is operational, not on
 The curated exemplar task bundles in `.opencode/plans/` and `.opencode/evidence/` are intended to keep this path replayable for maintainers.
 
 ## Standard agent loop
+Validation ladder baseline: plan/handoff check → discovery/research evidence → implementation/docs change → diff review → targeted validation commands → final `@quality-gate` for non-trivial/risky completion claims.
+
+Typed output baseline for active lanes (non-trivial work): `summary`, `findings`, `changed_files`, `risks`, `next_actions`, `evidence`.
+
+LSP-first baseline: use LSP for rename/refactor/navigation/diagnostic-driven edits when available; if fallback path used, record limitation/evidence impact explicitly.
+
 1. `@orchestrator` understands intent and chooses the route.
 2. `@explorer` does discovery when context is still unclear.
 3. `@artifact-planner` writes the plan for non-trivial tasks; trivial single-step and easily reversible tasks may skip planner.

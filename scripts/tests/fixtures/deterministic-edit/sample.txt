@@ -1,0 +1,9 @@
+Hello world!
+This is line 2.
+This is line 3.
+We have some duplicate lines here.
+Duplicate line.
+This is line 6.
+Duplicate line.
+This is line 8.
+End of file.

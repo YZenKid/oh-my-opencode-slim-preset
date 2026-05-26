@@ -50,6 +50,8 @@ permission:
     "*/.opencode/evidence/**/": allow
     ".opencode/evidence/**/*.md": allow
     "*/.opencode/evidence/**/*.md": allow
+    ".opencode/evidence/**/index.json": allow
+    "*/.opencode/evidence/**/index.json": allow
   write:
     "*": deny
     ".opencode/plans/": allow
@@ -70,6 +72,8 @@ permission:
     "*/.opencode/evidence/**/": allow
     ".opencode/evidence/**/*.md": allow
     "*/.opencode/evidence/**/*.md": allow
+    ".opencode/evidence/**/index.json": allow
+    "*/.opencode/evidence/**/index.json": allow
 ---
 
 # Artifact Planner Agent
@@ -89,7 +93,8 @@ It may call informational, read-only, research, and documentation subagents to g
 
 - This is artifact-writing planning mode, not fully read-only built-in Plan Mode.
 - Do not edit implementation files, app source files, package files, lockfiles, assets, tests, docs outside `.opencode/`, or config files outside `.opencode/`.
-- You may create/update/delete planning markdown artifacts and missing artifact directories under `.opencode/plans/`, `.opencode/draft/`, and `.opencode/evidence/` only, using only the scoped `write` and `edit` permissions below.
+- You may create/update/delete planning artifacts and missing artifact directories under `.opencode/plans/`, `.opencode/draft/`, and `.opencode/evidence/` only, using only the scoped `write` and `edit` permissions below.
+- Under `.opencode/evidence/<task-id>/`, you may also create or update `index.json` as the task-scoped evidence manifest required by repo checks.
 - If the user asks for implementation, produce the concrete `.opencode/plans/<task-id>.md` plan plus relevant draft/evidence artifacts first; only implementation/source edits happen after this agent is not being used or explicit workflow allows another agent/orchestrator to implement.
 - You may call informational/read-only helpers such as explorer, librarian (supporting research + document-centric helper), oracle, and council.
 - You may call conditional domain specialist only when material:

@@ -43,6 +43,24 @@ Use [TOOL_USAGE.md](./TOOL_USAGE.md) and [AGENT_TOOL_ACCESS.md](./AGENT_TOOL_ACC
 ## Improvement loop
 failure → taxonomy → remediation → new regression/eval case → rerun
 
+## OMP alignment checks (docs/contract phase)
+- Verify typed output schema fields present in active lane contracts.
+- Verify validation ladder language present in orchestrator/fixer/quality contracts.
+- Verify LSP-first + fallback evidence language present where implementation/routing owns edits.
+- Verify built-ins remain opt-in/comparator and not default canonical routing.
+
+## Deterministic edit helper MVP checks
+- `npm run test:deterministic-edit-helper`
+- Scope: proposal-only, zero-write, exact unique block match, expected file sha256, fail-closed reason codes, JSON + unified diff output.
+- Exit code contract:
+  - `10` stale hash
+  - `11` anchor not found
+  - `12` ambiguous anchor
+  - `13` no change
+  - `14` path out of scope
+  - `15` unsupported file
+  - `16` write forbidden
+
 ## Runnable fixtures in this repo
 - `npm run eval:harness`
 - fixtures live in `scripts/evals/fixtures/`

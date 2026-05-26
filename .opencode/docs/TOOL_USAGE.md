@@ -54,6 +54,8 @@ Commonly used categories:
 - Time/locality helpers (`time`)
 
 ## Selection heuristics
+Policy note: prefer local canonical capybara lanes for execution. Built-in OpenCode `build`/`plan`/`explore`/`general` are non-default comparator paths unless explicitly enabled.
+
 
 1. **Prefer repo-local evidence first** for codebase questions.
    - Preferred: `read` + `glob` + `grep`

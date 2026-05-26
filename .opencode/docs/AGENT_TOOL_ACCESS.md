@@ -80,6 +80,8 @@ Note: `@librarian` is a supporting research helper, not one of the 6 core agents
 - **fallback**: return `PASS_WITH_RISKS`/`NEEDS_FIX`/`BLOCKED` with explicit reason codes when evidence is incomplete.
 
 ## Boundary rules
+LSP-first policy for edit-owning lanes (`@orchestrator` tiny direct edits, `@fixer` bounded implementation): use LSP for rename/refactor/navigation/diagnostic-driven edits when available. If fallback path used, evidence must include limitation and confidence impact.
+
 
 1. Availability does not override permission boundaries.
 2. Preferred path can be skipped only with a concrete reason (not habit).

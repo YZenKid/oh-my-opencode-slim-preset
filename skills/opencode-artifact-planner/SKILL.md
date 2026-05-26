@@ -6,6 +6,7 @@ description: Standalone SDD/TDD artifact planning workflow for artifact-planner.
 # OpenCode Artifact Planner Skill
 
 Use this as the planner’s only workflow. Write planning artifacts only under `.opencode/plans/`, `.opencode/draft/`, and `.opencode/evidence/`.
+Inside `.opencode/evidence/<task-id>/`, include `index.json` when repo evidence checks require a task-scoped evidence manifest.
 `@artifact-planner` is a triggered/conditional planning lane, not a default-first lane for every task.
 
 Canonical tool references:
