@@ -17,7 +17,6 @@ Configured MCP surfaces include:
 - `shadcn`
 - `semgrep`
 - `github`
-- `brave-search` (disabled legacy)
 - Legacy `image-asset-generator` removed; image asset tools live under `9router`.
 
 ## 9Router MCP

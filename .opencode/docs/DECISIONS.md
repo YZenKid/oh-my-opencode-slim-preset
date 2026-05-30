@@ -3,7 +3,7 @@
 ## 2026-05-30 — 9Router primary migration
 - Provider default switched from `cliproxyapi` to `9router` in `opencode.json` and model routing env defaults.
 - Unified MCP `9router` enabled via `bin/9router-mcp.mjs` for web search, fetch, and image surfaces.
-- Legacy duplicate surfaces moved off default path (`brave-search` disabled; `image-asset-generator` retired) to avoid tool-name collision while keeping non-9Router MCPs intact.
+- Legacy duplicate image surface retired (`image-asset-generator` removed) to avoid tool-name collision; search/fetch/image asset tools now live under `9router`.
 - Agent/command model frontmatter and docs references aligned to `9router/...` aliases.
 - Verification evidence recorded under `.opencode/evidence/20260530-1647-9router-migration/verification.md`, including live-endpoint limitation when env unavailable.
 

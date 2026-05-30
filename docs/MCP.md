@@ -9,7 +9,6 @@ Configured MCP surfaces include:
 - `shadcn`
 - `semgrep`
 - `github`
-- `brave-search` (disabled legacy)
 
 ## 9Router MCP
 
