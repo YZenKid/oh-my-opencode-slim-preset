@@ -233,15 +233,6 @@
       "enabled": true,
       "timeout": 30000
     },
-    "image-asset-generator": {
-      "type": "local",
-      "command": [
-        "node",
-        "{env:HOME}/.config/opencode/bin/image-asset-mcp.mjs"
-      ],
-      "enabled": false,
-      "timeout": 300000
-    },
     "semgrep": {
       "type": "local",
       "command": [

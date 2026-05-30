@@ -7,7 +7,6 @@ Configured MCP surfaces include:
 - `grep_app`
 - `playwright`
 - `shadcn`
-- `image-asset-generator` (disabled compatibility)
 - `semgrep`
 - `github`
 - `brave-search` (disabled legacy)

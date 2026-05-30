@@ -13,6 +13,7 @@ import {
   parseImageResult,
   runBatch,
   generateImageAsset,
+  parsePngInfo,
 } from '../../bin/9router-mcp.mjs'
 
 const root = path.resolve(import.meta.dirname, '..', '..')
@@ -42,6 +43,8 @@ assert.equal(headers['content-type'], 'application/json')
 
 const sampleBase64 = 'SGVsbG8gV29ybGQ='
 const expectedBuf = Buffer.from('Hello World')
+const pngAlpha1x1 = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADElEQVR4nGP4z8AAAAMBAQDJ/pLvAAAAAElFTkSuQmCC', 'base64')
+const pngOpaque1x1 = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAC0lEQVR4nGNgQAAAAAMAASsJTYQAAAAASUVORK5CYII=', 'base64')
 
 const parsedB64 = await parseImageResult({ b64_json: sampleBase64 })
 assert.deepEqual(parsedB64.bytes, expectedBuf)
@@ -60,6 +63,10 @@ assert.equal(parsedUrl.source, 'url')
 
 const mockFetchFail = async () => ({ ok: false, status: 500 })
 await assert.rejects(() => parseImageResult({ url: 'https://mock.com/img.png' }, mockFetchFail), /Failed fetch image url: 500/)
+
+assert.equal(parsePngInfo(pngAlpha1x1)?.has_alpha, true)
+assert.equal(parsePngInfo(pngOpaque1x1)?.has_alpha, false)
+assert.equal(parsePngInfo(expectedBuf), null)
 
 const jobs = [{ id: '1', target_path: 'a.png' }, { id: '2', target_path: 'b.png' }]
 const batchRes = await runBatch(jobs, async (job) => {
@@ -83,6 +90,27 @@ const mockFetchGenerate = async (url, options) => {
   }
 }
 
+let transparentCalls = 0
+const mockFetchGenerateTransparentFallback = async (url, options) => {
+  assert.equal(url, 'https://api.9router.com/v1/images/generations')
+  transparentCalls += 1
+  const body = JSON.parse(options.body)
+  if (transparentCalls === 1) {
+    assert.equal(body.background, 'transparent')
+    return {
+      ok: false,
+      status: 400,
+      text: async () => 'transparent background is not supported',
+    }
+  }
+  assert.equal(body.background, 'opaque')
+  return {
+    ok: true,
+    headers: { get: () => 'application/json' },
+    json: async () => ({ data: [{ b64_json: pngOpaque1x1.toString('base64') }] }),
+  }
+}
+
 try {
   const result = await generateImageAsset({
     project_root: root,
@@ -98,6 +126,22 @@ try {
   assert.equal(result.quality, 'medium')
   const saved = await readFile(targetAbs)
   assert.deepEqual(saved, expectedBuf)
+
+  const transparentResult = await generateImageAsset({
+    project_root: root,
+    target_path: targetRel,
+    prompt: 'Test transparent',
+    width: 1,
+    height: 1,
+    output_format: 'png',
+    background: 'transparent',
+  }, mockFetchGenerateTransparentFallback)
+
+  assert.equal(transparentCalls, 2)
+  assert.equal(transparentResult.background, 'transparent')
+  assert.equal(transparentResult.transparency_verified, false)
+  assert.match(String(transparentResult.transparency_warning), /retried opaque/)
+  assert.equal(transparentResult.png_info?.has_alpha, false)
 } finally {
   await rm(testTmpDir, { recursive: true, force: true })
 }

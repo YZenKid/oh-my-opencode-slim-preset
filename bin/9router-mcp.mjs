@@ -59,6 +59,31 @@ export function authHeaders(token = env('NINEROUTER_KEY', '')) {
   return headers
 }
 
+function errorText(error) {
+  const parts = [
+    error?.message,
+    error?.error?.message,
+    error?.response?.data?.error?.message,
+    error?.response?.data?.message,
+    typeof error === 'string' ? error : undefined,
+  ].filter(Boolean)
+  try { parts.push(JSON.stringify(error)) } catch {}
+  return parts.join('\n')
+}
+
+function isTransparentUnsupportedError(error) {
+  return /transparent background is not supported|background.*transparent.*not supported|unsupported.*transparent|transparent.*unsupported/i.test(errorText(error))
+}
+
+function pngSignatureOk(bytes) {
+  return bytes.length > 25 && bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+}
+
+export function parsePngInfo(bytes) {
+  if (!pngSignatureOk(bytes)) return null
+  return { color_type: bytes[25], has_alpha: [4, 6].includes(bytes[25]) }
+}
+
 function sanitizeError(error) {
   const msg = String(error?.message || error || 'Unknown error')
   const key = env('NINEROUTER_KEY', '')
@@ -153,8 +178,20 @@ export async function generateImageAsset(input, fetchImpl = fetch) {
     quality,
   }
 
-  const res = await fetchImpl(`${baseUrl()}/v1/images/generations`, { method: 'POST', headers: authHeaders(), body: JSON.stringify(payload) })
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
+  let res = await fetchImpl(`${baseUrl()}/v1/images/generations`, { method: 'POST', headers: authHeaders(), body: JSON.stringify(payload) })
+  let transparentFallbackMode = null
+  if (!res.ok) {
+    const errBody = await res.text().catch(() => '')
+    const err = new Error(`HTTP ${res.status}${errBody ? `: ${errBody}` : ''}`)
+    if (background === 'transparent' && isTransparentUnsupportedError(err)) {
+      transparentFallbackMode = 'endpoint_rejected_transparent_background; retried opaque'
+      const retryPayload = { ...payload, background: 'opaque' }
+      res = await fetchImpl(`${baseUrl()}/v1/images/generations`, { method: 'POST', headers: authHeaders(), body: JSON.stringify(retryPayload) })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    } else {
+      throw err
+    }
+  }
 
   const contentType = String(res.headers?.get?.('content-type') || '')
   let bytes
@@ -172,12 +209,23 @@ export async function generateImageAsset(input, fetchImpl = fetch) {
     sourceUrl = parsed.url || null
   }
 
+  const pngInfo = format === 'png' ? parsePngInfo(bytes) : null
+  let transparencyVerified = null
+  let transparencyWarning = null
+  if (background === 'transparent' && format === 'png') {
+    transparencyVerified = Boolean(pngInfo?.has_alpha)
+    if (!transparencyVerified) {
+      transparencyWarning = transparentFallbackMode
+        ? `${transparentFallbackMode}; endpoint returned PNG without alpha after retry.`
+        : 'Endpoint accepted background=transparent but returned PNG without alpha.'
+    }
+  }
+
   if (Number.isFinite(maxBytes) && maxBytes > 0 && bytes.length > maxBytes) {
     throw new Error(`Image exceeds NINEROUTER_IMAGE_MAX_BYTES: ${bytes.length} > ${maxBytes}`)
   }
 
   await writeFile(outputPath, bytes)
-  const warning = background === 'transparent' && format === 'png' && source === 'binary' ? 'Provider may return opaque PNG for transparent request.' : null
 
   return {
     id: input.id,
@@ -187,6 +235,9 @@ export async function generateImageAsset(input, fetchImpl = fetch) {
     output_format: format,
     background,
     quality,
+    transparency_verified: transparencyVerified,
+    transparency_warning: transparencyWarning,
+    png_info: pngInfo,
     alt: input.alt || '',
     model,
     prompt_used: input.prompt,
@@ -194,7 +245,6 @@ export async function generateImageAsset(input, fetchImpl = fetch) {
     bytes: bytes.length,
     source,
     source_url: sourceUrl,
-    warning,
   }
 }
 

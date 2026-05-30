@@ -33,10 +33,6 @@ export function runPortabilityChecks({ read, state }) {
       }
     }
 
-    if (file === "opencode.json" && content.includes("./bin/image-asset-mcp.mjs")) {
-      state.failures += 1;
-      console.error(`✗ ${file}: image-asset-generator still uses ./bin/image-asset-mcp.mjs`);
-    }
   }
 
   for (const file of [

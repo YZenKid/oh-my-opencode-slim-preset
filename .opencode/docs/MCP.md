@@ -15,10 +15,10 @@ Configured MCP surfaces include:
 - `grep_app`
 - `playwright`
 - `shadcn`
-- `image-asset-generator` (disabled compatibility)
 - `semgrep`
 - `github`
 - `brave-search` (disabled legacy)
+- Legacy `image-asset-generator` removed; image asset tools live under `9router`.
 
 ## 9Router MCP
 
