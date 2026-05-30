@@ -3,6 +3,12 @@
 import assert from 'node:assert/strict'
 import { rm, readFile } from 'node:fs/promises'
 import path from 'node:path'
+
+let sharp = null
+try {
+  const mod = await import('sharp')
+  sharp = mod?.default || mod
+} catch {}
 import {
   assertInsideRoot,
   normalizeSize,
@@ -146,6 +152,65 @@ try {
 
   const repairedSaved = await readFile(targetAbs)
   assert.equal(parsePngInfo(repairedSaved)?.has_alpha, true)
+
+  if (sharp) {
+    const width = 5
+    const height = 5
+    const edgeWhiteCenterWhiteData = new Uint8Array(width * height * 3)
+    for (let y = 0; y < height; y += 1) {
+      for (let x = 0; x < width; x += 1) {
+        const idx = (y * width + x) * 3
+        const edge = x === 0 || y === 0 || x === width - 1 || y === height - 1
+        if (edge) {
+          edgeWhiteCenterWhiteData[idx] = 255
+          edgeWhiteCenterWhiteData[idx + 1] = 255
+          edgeWhiteCenterWhiteData[idx + 2] = 255
+        } else {
+          edgeWhiteCenterWhiteData[idx] = 20
+          edgeWhiteCenterWhiteData[idx + 1] = 20
+          edgeWhiteCenterWhiteData[idx + 2] = 20
+        }
+      }
+    }
+    const centerIdx = (2 * width + 2) * 3
+    edgeWhiteCenterWhiteData[centerIdx] = 250
+    edgeWhiteCenterWhiteData[centerIdx + 1] = 250
+    edgeWhiteCenterWhiteData[centerIdx + 2] = 250
+
+    const opaque3x3 = await sharp(edgeWhiteCenterWhiteData, { raw: { width, height, channels: 3 } }).png().toBuffer()
+    let preserveCalls = 0
+    const mockFetchPreserveInteriorWhite = async (url, options) => {
+      assert.equal(url, 'https://api.9router.com/v1/images/generations')
+      preserveCalls += 1
+      const body = JSON.parse(options.body)
+      if (preserveCalls === 1) {
+        assert.equal(body.background, 'transparent')
+        return { ok: false, status: 400, text: async () => 'transparent background is not supported' }
+      }
+      assert.equal(body.background, 'opaque')
+      return { ok: true, headers: { get: () => 'application/json' }, json: async () => ({ data: [{ b64_json: opaque3x3.toString('base64') }] }) }
+    }
+
+    const preserveResult = await generateImageAsset({
+      project_root: root,
+      target_path: targetRel,
+      prompt: 'Preserve interior near-white',
+      width,
+      height,
+      output_format: 'png',
+      background: 'transparent',
+    }, mockFetchPreserveInteriorWhite)
+
+    assert.equal(preserveCalls, 2)
+    assert.equal(preserveResult.transparency_verified, true)
+    const preserveSaved = await readFile(targetAbs)
+    const preserveRaw = await sharp(preserveSaved).ensureAlpha().raw().toBuffer()
+    const alphaCenter = preserveRaw[(2 * width + 2) * 4 + 3]
+    assert.equal(alphaCenter, 255)
+
+    const alphaEdge = preserveRaw[(0 * width + 2) * 4 + 3]
+    assert.equal(alphaEdge, 0)
+  }
 } finally {
   await rm(testTmpDir, { recursive: true, force: true })
 }

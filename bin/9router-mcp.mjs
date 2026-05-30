@@ -109,21 +109,59 @@ async function tryRepairTransparentPng(bytes) {
   if (meta?.hasAlpha) return { bytes, repaired: false, reason: 'already_has_alpha' }
 
   const { data, info } = await base.ensureAlpha(1).raw().toBuffer({ resolveWithObject: true })
-  for (let i = 0; i < data.length; i += info.channels) {
+  const width = info.width
+  const height = info.height
+  const channels = info.channels
+  const pixelCount = width * height
+  const nearWhiteMask = new Uint8Array(pixelCount)
+  const edgeConnectedMask = new Uint8Array(pixelCount)
+  const queue = []
+
+  for (let i = 0, p = 0; p < pixelCount; i += channels, p += 1) {
     const r = data[i]
     const g = data[i + 1]
     const b = data[i + 2]
-    const nearWhite = r >= 245 && g >= 245 && b >= 245
-    if (nearWhite) data[i + 3] = 0
+    if (r >= 245 && g >= 245 && b >= 245) nearWhiteMask[p] = 1
+  }
+
+  function pushIfEdgeNearWhite(x, y) {
+    const idx = y * width + x
+    if (!nearWhiteMask[idx] || edgeConnectedMask[idx]) return
+    edgeConnectedMask[idx] = 1
+    queue.push(idx)
+  }
+
+  for (let x = 0; x < width; x += 1) {
+    pushIfEdgeNearWhite(x, 0)
+    pushIfEdgeNearWhite(x, height - 1)
+  }
+  for (let y = 1; y < height - 1; y += 1) {
+    pushIfEdgeNearWhite(0, y)
+    pushIfEdgeNearWhite(width - 1, y)
+  }
+
+  while (queue.length) {
+    const idx = queue.pop()
+    const x = idx % width
+    const y = Math.floor(idx / width)
+    if (x > 0) pushIfEdgeNearWhite(x - 1, y)
+    if (x + 1 < width) pushIfEdgeNearWhite(x + 1, y)
+    if (y > 0) pushIfEdgeNearWhite(x, y - 1)
+    if (y + 1 < height) pushIfEdgeNearWhite(x, y + 1)
+  }
+
+  for (let p = 0; p < pixelCount; p += 1) {
+    if (!edgeConnectedMask[p]) continue
+    data[p * channels + 3] = 0
   }
 
   const repairedBytes = await sharp(data, {
-    raw: { width: info.width, height: info.height, channels: info.channels },
+    raw: { width, height, channels },
   }).png().toBuffer()
 
   const repairedInfo = parsePngInfo(repairedBytes)
   if (!repairedInfo?.has_alpha) return { bytes, repaired: false, reason: 'repair_failed_no_alpha' }
-  return { bytes: repairedBytes, repaired: true, reason: 'white_to_alpha_threshold' }
+  return { bytes: repairedBytes, repaired: true, reason: 'edge_connected_white_to_alpha' }
 }
 
 function baseUrl() {
